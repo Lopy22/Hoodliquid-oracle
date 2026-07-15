@@ -1,0 +1,48 @@
+{
+  "name": "hoodliquid-oracle",
+  "version": "1.0.0",
+  "description": "Standalone reproducible HoodLiquid pricing node",
+  "license": "MIT",
+  "private": false,
+  "main": "server/api.cjs",
+  "engines": {
+    "node": ">=22 <23"
+  },
+  "scripts": {
+    "db:migrate": "node server/migrate.cjs",
+    "oracle:check": "node scripts/check-readiness.cjs",
+    "oracle:once": "node server/workers/market-data.cjs --once",
+    "oracle:watch": "node server/workers/market-data.cjs",
+    "oracle:status": "node scripts/oracle-status.cjs",
+    "oracle:scrape": "node scripts/scrape-tcgplayer-prices.cjs --once",
+    "api": "node server/api.cjs",
+    "pm2:start": "pm2 start ops/ecosystem.config.cjs",
+    "test": "mocha --require test/setup.cjs \"test/**/*.test.cjs\"",
+    "test:integration": "RUN_POSTGRES_TESTS=true mocha --require test/setup.cjs \"test/integration/**/*.test.cjs\"",
+    "check:syntax": "for f in server/*.cjs server/workers/*.cjs scripts/*.cjs ops/*.cjs test/*.cjs; do node --check \"$f\"; done",
+    "check:secrets": "node scripts/check-secrets.cjs",
+    "check": "npm run check:syntax && npm test && npm run check:secrets",
+    "security:audit": "npm audit --audit-level=high"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "pg": "^8.22.0",
+    "pino": "^9.14.0",
+    "playwright": "^1.51.1"
+  },
+  "devDependencies": {
+    "chai": "^4.5.0",
+    "chai-as-promised": "^7.1.2",
+    "mocha": "11.3.0",
+    "pm2": "^7.0.3",
+    "supertest": "^7.2.2"
+  },
+  "overrides": {
+    "lodash": "^4.18.1",
+    "serialize-javascript": "^7.0.7",
+    "tmp": "^0.2.7",
+    "undici": "6.27.0",
+    "ws": "^8.21.0"
+  }
+}

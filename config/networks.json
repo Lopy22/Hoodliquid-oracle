@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "networks": [
+    {
+      "key": "robinhood-mainnet",
+      "name": "Robinhood Chain",
+      "chainId": 4663,
+      "testnet": false
+    },
+    {
+      "key": "robinhood-testnet",
+      "name": "Robinhood Chain Testnet",
+      "chainId": 46630,
+      "testnet": true
+    }
+  ]
+}

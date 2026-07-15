@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "defaultFloorUsd": 0.01,
+  "markets": {
+    "PL500": 10000,
+    "CHARIZARD-X": 100,
+    "CHARIZARD-151": 50,
+    "CHARIZARD-VSTAR-SWSH262": 5,
+    "CHARIZARD-EX-SIR-OF": 10,
+    "MEGA-CHARIZARD-X-023": 5,
+    "CHARIZARD-BS": 50
+  }
+}

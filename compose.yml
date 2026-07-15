@@ -1,0 +1,80 @@
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: hoodliquid_oracle
+      POSTGRES_USER: hoodliquid_oracle
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U hoodliquid_oracle -d hoodliquid_oracle"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    volumes:
+      - oracle-postgres:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  migrate:
+    build: .
+    command: ["node", "server/migrate.cjs"]
+    environment: &oracle-environment
+      CHAIN_ID: ${CHAIN_ID:-46630}
+      DATABASE_URL: postgresql://hoodliquid_oracle:${POSTGRES_PASSWORD}@postgres:5432/hoodliquid_oracle
+      ORACLE_TCGPLAYER_SOURCE: ${ORACLE_TCGPLAYER_SOURCE:-playwright}
+      ORACLE_TCGPLAYER_SCRAPING_PERMISSION_CONFIRMED: ${ORACLE_TCGPLAYER_SCRAPING_PERMISSION_CONFIRMED:-false}
+      ORACLE_HEADLESS: ${ORACLE_HEADLESS:-true}
+      ORACLE_PRIMARY_SOURCE: ${ORACLE_PRIMARY_SOURCE:-tcgplayer}
+      ORACLE_PL500_SOURCE: ${ORACLE_PL500_SOURCE:-pokeliquid-api}
+      ORACLE_SCRAPE_INTERVAL_MS: ${ORACLE_SCRAPE_INTERVAL_MS:-60000}
+      ORACLE_SCRAPE_CONCURRENCY: ${ORACLE_SCRAPE_CONCURRENCY:-22}
+      ORACLE_MARK_MAX_AGE_SECONDS: ${ORACLE_MARK_MAX_AGE_SECONDS:-1800}
+      ORACLE_SOURCE_QUORUM: ${ORACLE_SOURCE_QUORUM:-1}
+      ORACLE_MAX_SOURCE_DEVIATION_BPS: ${ORACLE_MAX_SOURCE_DEVIATION_BPS:-3000}
+      ORACLE_POKETRACE_USE_LISTINGS: ${ORACLE_POKETRACE_USE_LISTINGS:-false}
+      ORACLE_POKETRACE_POLL_INTERVAL_MS: ${ORACLE_POKETRACE_POLL_INTERVAL_MS:-900000}
+      ORACLE_POKETRACE_MAX_AGE_SECONDS: ${ORACLE_POKETRACE_MAX_AGE_SECONDS:-1800}
+      ORACLE_POKELIQUID_BASE_URL: ${ORACLE_POKELIQUID_BASE_URL:-https://www.pokeliquid.xyz/api/keeper}
+      ORACLE_POKELIQUID_MAX_AGE_SECONDS: ${ORACLE_POKELIQUID_MAX_AGE_SECONDS:-900}
+      POKETRACE_API_KEY: ${POKETRACE_API_KEY:-}
+      TCGPLAYER_BEARER_TOKEN: ${TCGPLAYER_BEARER_TOKEN:-}
+      TCGPLAYER_PUBLIC_KEY: ${TCGPLAYER_PUBLIC_KEY:-}
+      TCGPLAYER_PRIVATE_KEY: ${TCGPLAYER_PRIVATE_KEY:-}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: "no"
+
+  ingest:
+    build: .
+    command: ["node", "server/workers/market-data.cjs"]
+    environment: *oracle-environment
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    restart: unless-stopped
+
+  api:
+    build: .
+    command: ["node", "server/api.cjs"]
+    environment:
+      <<: *oracle-environment
+      HOST: 0.0.0.0
+      PORT: 8080
+    ports:
+      - "127.0.0.1:${PORT:-8080}:8080"
+    healthcheck:
+      test:
+        - CMD
+        - node
+        - -e
+        - fetch('http://127.0.0.1:8080/health/live').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    restart: unless-stopped
+
+volumes:
+  oracle-postgres:

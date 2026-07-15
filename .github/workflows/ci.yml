@@ -1,0 +1,49 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_DB: hoodliquid_oracle_test
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d hoodliquid_oracle_test"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 20
+    env:
+      CHAIN_ID: 46630
+      TEST_DATABASE_URL: postgresql://postgres:postgres@127.0.0.1:5432/hoodliquid_oracle_test
+      ORACLE_TCGPLAYER_SOURCE: api
+      ORACLE_PL500_SOURCE: disabled
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run check:syntax
+      - run: npm test
+      - run: npm run test:integration
+      - run: npm run check:secrets
+      - run: npm audit --audit-level=high
+      - name: Validate Compose
+        env:
+          POSTGRES_PASSWORD: ci-only-password
+        run: docker compose config
+      - name: Build container
+        run: docker build -t hoodliquid-oracle:ci .

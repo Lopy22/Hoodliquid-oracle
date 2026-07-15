@@ -1,0 +1,15 @@
+.git
+.github
+node_modules
+.env
+.env.*
+!.env.example
+coverage
+playwright-report
+test-results
+data/oracle/prices.json
+data/oracle/history.json
+data/oracle/status.json
+data/oracle/*.tmp
+*.log
+*.dump
