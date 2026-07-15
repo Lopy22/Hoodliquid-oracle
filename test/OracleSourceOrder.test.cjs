@@ -1,6 +1,6 @@
 const { expect } = require("chai");
-const { allowPlaywrightFallback, buildPl500IndexQuote, crossSourceStatus, mapWithConcurrency, selectOracleQuote } = require("../scripts/scrape-tcgplayer-prices.cjs");
-const { confidenceBps, isPl500Ready, isQuoteAccepted } = require("../server/workers/market-data.cjs");
+const { allowPlaywrightFallback, buildHl500IndexQuote, crossSourceStatus, mapWithConcurrency, selectOracleQuote } = require("../scripts/scrape-tcgplayer-prices.cjs");
+const { confidenceBps, isHl500Ready, isQuoteAccepted } = require("../server/workers/market-data.cjs");
 
 describe("Oracle source order", function () {
   const now = 1_800_000_000;
@@ -98,7 +98,7 @@ describe("Oracle source order", function () {
     process.env.ORACLE_TCGPLAYER_SOURCE = "api";
     const result = await selectOracleQuote({
       market: {
-        priceKey: "PL500-001",
+        priceKey: "HL500-001",
         tcgplayerId: null,
         seedPriceUsd: 12.34,
         poketraceEligible: false,
@@ -115,7 +115,7 @@ describe("Oracle source order", function () {
     expect(result.secondaryQuote).to.equal(null);
   });
 
-  it("enables PokeLiquid-compatible Playwright pricing without source API keys", function () {
+  it("enables permitted Playwright pricing without source API keys", function () {
     process.env.ORACLE_TCGPLAYER_SOURCE = "playwright";
     process.env.ORACLE_REQUIRE_AUTHENTICATED_SOURCES = "true";
     expect(allowPlaywrightFallback()).to.equal(true);
@@ -154,8 +154,8 @@ describe("Oracle source order", function () {
     expect(result).to.deep.equal([10, 20, 30, 40, 50, 60]);
   });
 
-  it("exposes PL500 seed pricing as indicative without enabling trading", function () {
-    const quote = buildPl500IndexQuote({
+  it("exposes HL500 seed pricing as indicative without enabling trading", function () {
+    const quote = buildHl500IndexQuote({
       prices: {},
       previousQuote: null,
       priceFloors: { defaultFloorUsd: 0, markets: {} },
@@ -164,12 +164,12 @@ describe("Oracle source order", function () {
 
     expect(quote.price).to.be.greaterThan(0);
     expect(quote.lastUpdateTime).to.equal(now);
-    expect(quote.source).to.equal("user-top500-list");
+    expect(quote.source).to.equal("hoodliquid-hl500-seed");
     expect(quote.indicative).to.equal(true);
     expect(quote.tradable).to.equal(false);
     expect(quote.liveConstituentCount).to.equal(0);
     expect(confidenceBps(quote.source)).to.equal(0);
     expect(isQuoteAccepted(quote, 1)).to.equal(false);
-    expect(isPl500Ready()).to.equal(false);
+    expect(isHl500Ready()).to.equal(false);
   });
 });

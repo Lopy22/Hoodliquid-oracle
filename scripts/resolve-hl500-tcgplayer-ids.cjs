@@ -3,8 +3,8 @@ const path = require("path");
 require("dotenv").config({ path: ".env.local", quiet: true });
 require("dotenv").config({ quiet: true });
 
-const DEFAULT_PL500_PATH = "data/oracle/pl500-constituents.json";
-const DEFAULT_REPORT_PATH = "data/oracle/pl500-resolution-report.json";
+const DEFAULT_HL500_PATH = "data/oracle/hl500-constituents.json";
+const DEFAULT_REPORT_PATH = "data/oracle/hl500-resolution-report.json";
 const DEFAULT_BASE_URL = "https://api.tcgplayer.com";
 const DEFAULT_POKEMON_CATEGORY_ID = 3;
 const DEFAULT_SEARCH_LIMIT = 20;
@@ -15,9 +15,9 @@ async function main() {
   const token = process.env.TCGPLAYER_BEARER_TOKEN || (await fetchTcgplayerBearerToken());
   if (!token) throw new Error("Missing TCGPlayer credentials; set TCGPLAYER_BEARER_TOKEN or TCGPLAYER_PUBLIC_KEY / TCGPLAYER_PRIVATE_KEY");
 
-  const pl500Path = resolvePath(process.env.ORACLE_PL500_CONSTITUENTS || DEFAULT_PL500_PATH);
-  const pl500 = JSON.parse(fs.readFileSync(pl500Path, "utf8"));
-  const rows = Array.isArray(pl500.constituents) ? pl500.constituents : [];
+  const hl500Path = resolvePath(process.env.ORACLE_HL500_CONSTITUENTS || DEFAULT_HL500_PATH);
+  const hl500 = JSON.parse(fs.readFileSync(hl500Path, "utf8"));
+  const rows = Array.isArray(hl500.constituents) ? hl500.constituents : [];
   const selectedRows = rows
     .filter((row) => options.force || !Number(row.tcgplayerId || 0))
     .slice(options.offset, options.limit > 0 ? options.offset + options.limit : undefined);
@@ -60,14 +60,14 @@ async function main() {
 
   if (options.write) {
     const next = {
-      ...pl500,
+      ...hl500,
       constituents: updatedRows
     };
-    writeJsonAtomic(pl500Path, next);
+    writeJsonAtomic(hl500Path, next);
   }
 
   console.log(
-    `PL500 resolver ${options.write ? "wrote" : "dry-run"}: ${report.matched} matched, ${report.needsReview} review, ${report.unresolved} unresolved`
+    `HL500 resolver ${options.write ? "wrote" : "dry-run"}: ${report.matched} matched, ${report.needsReview} review, ${report.unresolved} unresolved`
   );
   console.log(`Report: ${resolvePath(options.reportPath)}`);
 }

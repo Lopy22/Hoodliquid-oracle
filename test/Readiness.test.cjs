@@ -5,18 +5,18 @@ describe("Oracle readiness", function () {
   const now = Date.parse("2026-07-15T00:00:00.000Z");
   const network = { chainId: 46630, key: "robinhood-testnet" };
   const originalSource = process.env.ORACLE_TCGPLAYER_SOURCE;
-  const originalPl500 = process.env.ORACLE_PL500_SOURCE;
+  const originalHl500 = process.env.ORACLE_HL500_ENABLED;
 
   beforeEach(function () {
     process.env.ORACLE_TCGPLAYER_SOURCE = "api";
-    process.env.ORACLE_PL500_SOURCE = "disabled";
+    process.env.ORACLE_HL500_ENABLED = "false";
   });
 
   after(function () {
     if (originalSource === undefined) delete process.env.ORACLE_TCGPLAYER_SOURCE;
     else process.env.ORACLE_TCGPLAYER_SOURCE = originalSource;
-    if (originalPl500 === undefined) delete process.env.ORACLE_PL500_SOURCE;
-    else process.env.ORACLE_PL500_SOURCE = originalPl500;
+    if (originalHl500 === undefined) delete process.env.ORACLE_HL500_ENABLED;
+    else process.env.ORACLE_HL500_ENABLED = originalHl500;
   });
 
   it("requires PostgreSQL, a recent successful cycle, and fresh enabled marks", async function () {

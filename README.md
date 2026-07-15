@@ -13,11 +13,11 @@ on-chain publication code.
 ## Data flow and trust boundary
 
 ~~~text
-TCGPlayer Near Mint English ----+
-                                |
-PokeTrace optional corroboration+--> freshness / floors / quorum
-                                |             |
-PokeLiquid PL500 (testnet) -----+             v
+TCGPlayer Near Mint English -----+
+                                 |
+PokeTrace optional corroboration +--> freshness / floors / quorum
+                                 |             |
+HoodLiquid 500-card basket ------+             v
                                          adaptive EWMA
                                                |
                                                v
@@ -41,16 +41,16 @@ and submit transactions. Those components are intentionally excluded.
 
 One running instance is bound to one chain ID and one database:
 
-| Network | Chain ID | PL500 behavior |
+| Network | Chain ID | HL500 behavior |
 | --- | ---: | --- |
 | Robinhood Chain | 4663 | Disabled until all 500 mappings and exactly 8 approved snapshots are complete |
-| Robinhood Chain Testnet | 46630 | May use the public PokeLiquid PL500 observation |
+| Robinhood Chain Testnet | 46630 | Uses the same HoodLiquid constituent-completeness gate |
 
 The committed registry contains these seven presets:
 
 | Market | Type | Floor (USD) | Default card source |
 | --- | --- | ---: | --- |
-| PL500 | Index | 10,000 | PokeLiquid on testnet; complete constituent basket on mainnet |
+| HL500 | Index | 10,000 | HoodLiquid's reviewed 500-card constituent basket |
 | CHARIZARD-X | Card | 100 | TCGPlayer Near Mint English |
 | CHARIZARD-151 | Card | 50 | TCGPlayer Near Mint English |
 | CHARIZARD-VSTAR-SWSH262 | Card | 5 | TCGPlayer Near Mint English |
@@ -58,10 +58,10 @@ The committed registry contains these seven presets:
 | MEGA-CHARIZARD-X-023 | Card | 5 | TCGPlayer Near Mint English |
 | CHARIZARD-BS | Card | 50 | TCGPlayer Near Mint English |
 
-The public PL500 file contains all 500 rows and the current seed list, but it
+The public HL500 file contains all 500 rows and the current seed list, but it
 currently contains 0 TCGPlayer mappings and 0 approved snapshot exceptions.
 Its seed sum is indicative only and is never accepted as a tradable mark.
-Mainnet PL500 therefore remains unavailable as committed.
+HL500 therefore remains unavailable on both networks as committed.
 
 ## Compliance requirement for TCGPlayer
 
@@ -115,6 +115,9 @@ docker compose up --build
 
 Compose starts PostgreSQL 16, runs migrations once, then starts the ingestion
 worker and API. It binds the API to loopback port 8080 by default.
+The PostgreSQL container automatically creates the `hoodliquid_oracle` role
+and `hoodliquid_oracle` database from `POSTGRES_USER` and `POSTGRES_DB`; the
+manual role-creation steps below are only for a native PostgreSQL installation.
 
 ~~~bash
 curl -fsS http://127.0.0.1:8080/health/live
@@ -136,10 +139,70 @@ Requirements:
 - Playwright Chromium when Playwright mode is selected
 - PM2 for the optional service manager workflow
 
-Create a database and environment file:
+On Ubuntu, install and start PostgreSQL 16 before creating the role (use the
+PostgreSQL upstream repository if your Ubuntu release does not provide 16):
 
 ~~~bash
-createdb hoodliquid_oracle_testnet
+sudo apt update
+sudo apt install -y postgresql-16 postgresql-client-16
+sudo systemctl enable --now postgresql
+~~~
+
+On macOS with Homebrew:
+
+~~~bash
+brew install postgresql@16
+brew services start postgresql@16
+~~~
+
+Create the PostgreSQL login role and testnet database before running a
+migration. The role name in the example `DATABASE_URL` is not created by npm.
+Open PostgreSQL as its administrative user:
+
+~~~bash
+sudo -u postgres psql
+~~~
+
+On macOS with a Homebrew PostgreSQL installation, the equivalent is usually
+`psql postgres` under the macOS user that installed PostgreSQL. Run the
+following SQL inside `psql`; replace the example password first:
+
+~~~sql
+DO $$
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'hoodliquid_oracle') THEN
+    CREATE ROLE hoodliquid_oracle LOGIN;
+  END IF;
+END
+$$;
+
+ALTER ROLE hoodliquid_oracle WITH PASSWORD 'replace-with-a-long-random-password';
+
+SELECT 'CREATE DATABASE hoodliquid_oracle_testnet OWNER hoodliquid_oracle'
+WHERE NOT EXISTS (
+  SELECT FROM pg_database WHERE datname = 'hoodliquid_oracle_testnet'
+)\gexec
+
+REVOKE ALL ON DATABASE hoodliquid_oracle_testnet FROM PUBLIC;
+GRANT CONNECT, TEMPORARY ON DATABASE hoodliquid_oracle_testnet TO hoodliquid_oracle;
+\connect hoodliquid_oracle_testnet
+REVOKE CREATE ON SCHEMA public FROM PUBLIC;
+GRANT USAGE, CREATE ON SCHEMA public TO hoodliquid_oracle;
+\quit
+~~~
+
+The role owns the database, so it can create the tables, partitions, indexes,
+and migration ledger. Test the exact credentials before installing the app:
+
+~~~bash
+PGPASSWORD='replace-with-a-long-random-password' \
+psql -h 127.0.0.1 -U hoodliquid_oracle -d hoodliquid_oracle_testnet \
+  -c 'select current_user, current_database();'
+~~~
+
+Then create the environment file and install dependencies:
+
+~~~bash
 cp .env.example .env
 npm ci
 npx playwright install chromium
@@ -151,7 +214,15 @@ On Ubuntu, install Playwright's browser and OS dependencies together:
 npx playwright install --with-deps chromium
 ~~~
 
-Edit DATABASE_URL and the source settings in .env, then run:
+Set `.env` to the same password and database. Percent-encode any characters in
+the password that have special meaning in a URL:
+
+~~~dotenv
+CHAIN_ID=46630
+DATABASE_URL=postgresql://hoodliquid_oracle:replace-with-a-long-random-password@127.0.0.1:5432/hoodliquid_oracle_testnet
+~~~
+
+Then run the migration and one ingestion cycle:
 
 ~~~bash
 npm run db:migrate
@@ -185,10 +256,11 @@ worker is accidentally started.
 
 Use separate databases, environment files, API ports, and PM2 process sets.
 Do not point both chain IDs at the same database. A testnet instance uses
-CHAIN_ID 46630. A mainnet instance uses CHAIN_ID 4663 and must set
-ORACLE_PL500_SOURCE to constituents; PL500 will stay disabled until the
-committed mapping gate is complete. The other six registry markets can operate
-independently of that PL500 gate.
+`CHAIN_ID=46630`. A mainnet instance uses `CHAIN_ID=4663`; HL500 will stay
+unavailable until the committed mapping gate is complete. The other six
+registry markets can operate independently of that gate. Create a separate
+mainnet database (and preferably a separate production login role) using the
+SQL procedure above.
 
 The PM2 file derives unique process names from CHAIN_ID. To launch two copies
 from one checkout, provide each environment file explicitly:
@@ -305,35 +377,31 @@ Default confidence values are:
 
 | Source | Confidence (basis points) |
 | --- | ---: |
-| PokeLiquid | 8500 |
+| Complete HoodLiquid HL500 basket | 9500 |
 | TCGPlayer API or Playwright | 9500 |
 | PokeTrace sold-listing EWAP | 9750 |
 | PokeTrace aggregate | 9400 |
 | Approved snapshot | 9000 |
-| Indicative PL500 seed list | 0 |
+| Indicative HL500 seed list | 0 |
 
 Each accepted source hash is SHA-256 over a stable serialization of market,
 source, raw price, smoothed price, and source observation time. Repeated
 observations are idempotent.
 
-### PL500
+### HL500
 
-On testnet, ORACLE_PL500_SOURCE may be pokeliquid-api. The node requests the
-latest public PokeLiquid PL500 row without authentication and rejects missing,
-nonpositive, stale, or more-than-five-minutes-future observations. It also
-requires the transaction signature field to look like a 60-to-100-character
-Base58 Solana signature.
+HL500 is HoodLiquid's own fixed 500-card index on both networks. The worker
+loads `data/oracle/hl500-constituents.json`, obtains each reviewed constituent's
+TCGPlayer observation (or one of exactly eight approved snapshot exceptions),
+applies row-level smoothing, and sums the 500 accepted USD marks into the raw
+index value. The index then passes the same floor and adaptive-EWMA rules as the
+other markets.
 
-That is signature-format-only validation. This repository does not
-cryptographically verify the signature, transaction contents, account identity,
-or the upstream computation. PokeLiquid is an unauthenticated external
-dependency and its observation receives a lower confidence value before the
-local adaptive EWMA is applied.
-
-On mainnet, the external PokeLiquid shortcut is never enabled. A constituent
-index becomes live only when the file has exactly 500 usable rows and exactly 8
-approved snapshot exceptions. Until then, the seed sum is marked indicative,
-non-tradable, and excluded from accepted marks.
+The index becomes authoritative only when the file contains exactly 500 usable
+rows: 492 reviewed TCGPlayer product mappings and exactly 8 approved snapshots.
+There is no external index fallback. Until that gate passes, the seed sum is
+marked `hoodliquid-hl500-seed`, has zero confidence, is non-tradable, and is
+excluded from accepted marks and on-chain publication.
 
 ## PostgreSQL model
 
@@ -384,31 +452,30 @@ psql "$DATABASE_URL" -c "select market_id,interval_seconds,bucket,open,high,low,
 | ORACLE_POKETRACE_POLL_INTERVAL_MS | 900000 | PokeTrace polling cadence |
 | ORACLE_POKETRACE_MAX_AGE_SECONDS | 1800 | Maximum corroboration age |
 | ORACLE_POKETRACE_USE_LISTINGS | true | Try the sold-listings endpoint; false uses aggregate mode |
-| ORACLE_PL500_SOURCE | pokeliquid-api | pokeliquid-api, constituents, or disabled |
-| ORACLE_POKELIQUID_MAX_AGE_SECONDS | 900 | Testnet upstream age limit |
+| ORACLE_HL500_ENABLED | true | Enables HL500 evaluation; completeness remains mandatory |
 | ORACLE_PRICE_FLOORS | data/oracle/price-floors.json | Optional floor file override |
 | ORACLE_MARKET_REGISTRY | data/oracle/market-registry.json | Optional registry override |
-| ORACLE_PL500_CONSTITUENTS | data/oracle/pl500-constituents.json | Optional PL500 file override |
+| ORACLE_HL500_CONSTITUENTS | data/oracle/hl500-constituents.json | Optional HL500 file override |
 
 ## Customizing markets
 
 Edit data/oracle/market-registry.json for market identity, source product,
 condition, floor, and display metadata. Keep priceApiMarket unique and preserve
 positive floors. Update data/oracle/price-floors.json as an auditable mirror.
-For PL500, edit data/oracle/pl500-constituents.json and use the included
+For HL500, edit data/oracle/hl500-constituents.json and use the included
 resolver only with approved API access:
 
 ~~~bash
-node scripts/resolve-pl500-tcgplayer-ids.cjs --dry-run
+node scripts/resolve-hl500-tcgplayer-ids.cjs --dry-run
 ~~~
 
-Run npm test after every registry change. Mainnet PL500 will not activate unless
+Run npm test after every registry change. Mainnet HL500 will not activate unless
 the exact 500-usable-row and 8-snapshot gate passes.
 
 ## Testing
 
-Automated tests use recorded in-memory fixtures and never contact TCGPlayer,
-PokeTrace, or PokeLiquid. Run:
+Automated tests use recorded in-memory fixtures and never contact TCGPlayer or
+PokeTrace. Run:
 
 ~~~bash
 npm run check
@@ -442,10 +509,24 @@ No accepted mark appears:
 - Check the floor, freshness, source quorum, and deviation settings.
 - Confirm PostgreSQL migrations ran against the same DATABASE_URL.
 
-PL500 is absent on mainnet:
+HL500 is absent on testnet or mainnet:
 
 - This is intentional while the committed constituent mapping is incomplete.
-- Do not select PokeLiquid as a mainnet shortcut.
+- Complete and review all 492 product mappings and 8 snapshot exceptions.
+
+Migration says role `hoodliquid_oracle` does not exist:
+
+- `npm run db:migrate` creates tables inside an existing database; it does not
+  create PostgreSQL server roles or databases.
+- Run the role/database SQL in the Native Node.js section as a PostgreSQL
+  administrator, then verify the exact `DATABASE_URL` with `psql`.
+
+Migration says permission denied for the database or schema:
+
+- As an administrator, grant `CONNECT` on the database and `USAGE, CREATE` on
+  its `public` schema as shown above.
+- Confirm the database owner with
+  `psql postgres -c "select datname, pg_get_userbyid(datdba) from pg_database where datname='hoodliquid_oracle_testnet'"`.
 
 Worker says an active leader exists:
 
@@ -464,7 +545,7 @@ credentials in ignored environment files or a secret manager. Bind the API to
 loopback behind your own authenticated/restricted reverse proxy when required.
 
 Source names and market/product references belong to their respective owners.
-TCGPlayer, PokeTrace, PokeLiquid, Pokémon, Robinhood, and any other referenced
+TCGPlayer, PokeTrace, Pokémon, Robinhood, and any other referenced
 services do not endorse this repository. Operators are responsible for their
 own contractual, legal, data-protection, and licensing obligations.
 

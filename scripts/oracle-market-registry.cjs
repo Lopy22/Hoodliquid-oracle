@@ -53,9 +53,9 @@ function validateOracleMarketRegistry(registry, registryPath = DEFAULT_MARKET_RE
       }
     }
 
-    if (market.type === "INDEX" && market.priceApiMarket === "PL500") {
+    if (market.type === "INDEX" && market.priceApiMarket === "HL500") {
       if (!market.oracle || market.oracle.kind !== "fixed-basket-index") {
-        throw new Error("PL500 must declare oracle.kind fixed-basket-index");
+        throw new Error("HL500 must declare oracle.kind fixed-basket-index");
       }
       requireField(market.oracle, "constituentsPath", registryPath);
       requirePositiveInteger(market.oracle, "targetConstituents", registryPath);

@@ -28,7 +28,7 @@ jobs:
       CHAIN_ID: 46630
       TEST_DATABASE_URL: postgresql://postgres:postgres@127.0.0.1:5432/hoodliquid_oracle_test
       ORACLE_TCGPLAYER_SOURCE: api
-      ORACLE_PL500_SOURCE: disabled
+      ORACLE_HL500_ENABLED: "false"
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

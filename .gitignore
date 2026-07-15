@@ -13,7 +13,7 @@ data/oracle/watcher.lock
 data/oracle/tcgplayer-skus.json
 data/oracle/poketrace-cards.json
 data/oracle/poketrace-prices.json
-data/oracle/pl500-resolution-report.json
+data/oracle/hl500-resolution-report.json
 *.log
 *.sql.gz
 *.dump

@@ -22,31 +22,29 @@
   },
   "markets": [
     {
-      "id": "PL500",
-      "symbol": "PL500",
-      "name": "PL500-PERP",
-      "displayName": "PL500",
-      "subtitle": "PL500 Index - Top 500 Pokemon Cards",
+      "id": "HL500",
+      "symbol": "HL500",
+      "name": "HL500-PERP",
+      "displayName": "HL500",
+      "subtitle": "HL500 Index - Top 500 Pokemon Cards",
       "badge": "INDEX",
       "type": "INDEX",
       "live": true,
-      "priceApiMarket": "PL500",
+      "priceApiMarket": "HL500",
       "tcgplayerId": null,
-      "image": "/pl500.svg",
+      "image": "/hl500.svg",
       "priceFloorUsd": 10000,
       "oracle": {
         "kind": "fixed-basket-index",
         "method": "sum-constituent-near-mint-market-prices",
-        "constituentsPath": "data/oracle/pl500-constituents.json",
+        "constituentsPath": "data/oracle/hl500-constituents.json",
         "targetConstituents": 500,
         "apiPricedTargetCount": 492,
         "snapshotExceptionTargetCount": 8,
-        "testnetLiveSource": "pokeliquid-api",
-        "testnetUpstreamUrl": "https://www.pokeliquid.xyz/api/keeper/prices?market=PL500&limit=1",
-        "sourcePriority": ["pokeliquid-api-testnet", "tcgplayer-playwright", "tcgplayer-api", "approved-snapshot"]
+        "sourcePriority": ["tcgplayer-playwright", "tcgplayer-api", "poketrace-ewap", "approved-snapshot"]
       },
       "sourceLinks": {
-        "constituents": "data/oracle/pl500-constituents.json"
+        "constituents": "data/oracle/hl500-constituents.json"
       }
     },
     {

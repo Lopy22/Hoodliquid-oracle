@@ -3,7 +3,6 @@ const path = require("path");
 const { EWMA_TIERS, PRICE_SCALE, smoothQuote } = require("./oracle-smoothing.cjs");
 const { cardOracleTargets, registryPriceFloors } = require("./oracle-market-registry.cjs");
 const { createPoketraceClient } = require("./poketrace-oracle.cjs");
-const { fetchPokeliquidPl500Quote, pl500Source } = require("./pl500-market.cjs");
 require("dotenv").config({ path: ".env.local", quiet: true });
 if (process.env.NODE_ENV === "production") require("dotenv").config({ path: ".env.production", quiet: true });
 require("dotenv").config({ quiet: true });
@@ -14,7 +13,7 @@ const DEFAULT_TCGPLAYER_SOURCE = "playwright";
 const DEFAULT_PRIMARY_SOURCE = "tcgplayer";
 const DEFAULT_CACHE_PATH = "data/oracle/prices.json";
 const DEFAULT_SKU_CACHE_PATH = "data/oracle/tcgplayer-skus.json";
-const DEFAULT_PL500_PATH = "data/oracle/pl500-constituents.json";
+const DEFAULT_HL500_PATH = "data/oracle/hl500-constituents.json";
 const DEFAULT_PRICE_FLOOR_PATH = "data/oracle/price-floors.json";
 const DEFAULT_POKETRACE_CACHE_PATH = "data/oracle/poketrace-prices.json";
 const DEFAULT_POKETRACE_POLL_INTERVAL_MS = 15 * 60 * 1000;
@@ -140,52 +139,18 @@ async function scrapeCycle(options = {}) {
     if (browserState.browser) await browserState.browser.close();
   }
 
-  const previousPl500Quote = previous?.prices?.PL500;
-  let pl500Quote;
-  if (pl500Source() === "pokeliquid-api") {
-    try {
-      const upstream = await fetchPokeliquidPl500Quote({ now });
-      const repeated = previousPl500Quote?.source === upstream.source
-        && Number(previousPl500Quote.sourceObservedAt || 0) === upstream.observedAt;
-      const metadata = {
-        sourceObservedAt: upstream.observedAt,
-        independentSourceCount: 1,
-        upstreamEwmaUsd: upstream.upstreamEwmaUsd,
-        upstreamTransactionSignature: upstream.transactionSignature,
-        upstreamId: upstream.upstreamId,
-        upstreamDeviation: upstream.upstreamDeviation,
-        upstreamAlpha: upstream.upstreamAlpha,
-        upstreamUrl: upstream.sourceUrl,
-        method: "pokeliquid-public-pl500-then-hoodliquid-adaptive-ewma",
-        indicative: false,
-        tradable: true
-      };
-      pl500Quote = repeated
-        ? { ...previousPl500Quote, ...metadata }
-        : smoothQuote(Math.round(upstream.rawPriceUsd * PRICE_SCALE), previousPl500Quote, upstream.observedAt, upstream.source, {
-            priceFloor: getPriceFloor("PL500", priceFloors),
-            metadata
-          });
-      observedSources.add(upstream.source);
-      successfulMarkets += 1;
-      if (!quiet) {
-        console.log(`PL500: raw $${upstream.rawPriceUsd.toFixed(2)} -> ewma $${(pl500Quote.price / PRICE_SCALE).toFixed(2)} (${upstream.source}${repeated ? ", cached observation" : ""})`);
-      }
-    } catch (error) {
-      failures.push({
-        market: "PL500",
-        source: "pokeliquid-api",
-        message: error instanceof Error ? error.message : String(error)
-      });
-      pl500Quote = previousPl500Quote?.source === "pokeliquid-api"
-        ? previousPl500Quote
-        : buildPl500IndexQuote({ prices, previousQuote: previousPl500Quote, priceFloors, now });
-      if (!quiet) console.warn(`PL500: ${failures.at(-1).message}`);
-    }
-  } else {
-    pl500Quote = buildPl500IndexQuote({ prices, previousQuote: previousPl500Quote, priceFloors, now });
+  const previousHl500Quote = previous?.prices?.HL500;
+  const hl500Quote = buildHl500IndexQuote({
+    prices,
+    previousQuote: previousHl500Quote,
+    priceFloors,
+    now
+  });
+  if (hl500Quote.source === "hoodliquid-hl500") {
+    observedSources.add(hl500Quote.source);
+    successfulMarkets += 1;
   }
-  prices.PL500 = withRefreshChange(pl500Quote, previousPl500Quote, now);
+  prices.HL500 = withRefreshChange(hl500Quote, previousHl500Quote, now);
 
   let poketracePayload = previousPoketrace;
   if (shouldPollPoketrace) {
@@ -220,7 +185,7 @@ async function scrapeCycle(options = {}) {
     acquisition: {
       primary: oraclePrimarySource(),
       tcgplayerMode: tcgplayerSourceMode(),
-      pl500Source: pl500Source(),
+      hl500Method: "hoodliquid-constituents",
       concurrency: scrapeConcurrency,
       playwrightEnabled: allowPlaywrightScraping()
     },
@@ -412,7 +377,6 @@ function assertPlaywrightPermission() {
 function validateSourceConfiguration() {
   tcgplayerSourceMode();
   oraclePrimarySource();
-  pl500Source();
   if (requiresPlaywrightPermission()) assertPlaywrightPermission();
   return true;
 }
@@ -671,8 +635,8 @@ function selectTargets() {
     .filter(Boolean);
   const includeAll = requested.length === 0 || requested.includes("ALL");
   const limit = Number(process.env.ORACLE_SCRAPE_LIMIT || 0);
-  const pl500List = loadPl500List();
-  const pl500Targets = pl500List.constituents
+  const hl500List = loadHl500List();
+  const hl500Targets = hl500List.constituents
     .filter((constituent) => constituent.tcgplayerId || constituent.snapshotOnly)
     .map((constituent) => ({
       priceKey: constituent.id,
@@ -686,7 +650,7 @@ function selectTargets() {
       languageId: Number(constituent.languageId || getPreferredLanguageId()),
       tcgplayerUrl: constituent.tcgplayerUrl || (constituent.tcgplayerId ? `https://www.tcgplayer.com/product/${constituent.tcgplayerId}?page=1&Language=English` : undefined)
     }));
-  const selected = pl500Targets.filter(
+  const selected = hl500Targets.filter(
     (market) => includeAll || requested.includes(market.priceKey.toUpperCase()) || requested.includes(String(market.tcgplayerId))
   );
   const registryTargets = cardOracleTargets();
@@ -702,14 +666,14 @@ function selectTargets() {
   return limit > 0 ? targets.slice(0, limit) : targets;
 }
 
-function loadPl500List() {
-  const configured = process.env.ORACLE_PL500_CONSTITUENTS || DEFAULT_PL500_PATH;
+function loadHl500List() {
+  const configured = process.env.ORACLE_HL500_CONSTITUENTS || DEFAULT_HL500_PATH;
   const filePath = path.isAbsolute(configured) ? configured : path.join(process.cwd(), configured);
   return JSON.parse(fs.readFileSync(filePath, "utf8"));
 }
 
 function chooseCacheSource(observedSources, hasApiClient) {
-  if (observedSources.has("pokeliquid-api")) return "pokeliquid-api";
+  if (observedSources.has("hoodliquid-hl500")) return "hoodliquid-hl500";
   if (observedSources.has("poketrace-ewap")) return "poketrace-ewap";
   if (observedSources.has("poketrace-aggregate")) return "poketrace-aggregate";
   if (observedSources.has("tcgplayer-api")) return "tcgplayer-api";
@@ -808,9 +772,9 @@ function withRefreshChange(quote, previousQuote, refreshedAt) {
   };
 }
 
-function buildPl500IndexQuote({ prices, previousQuote, priceFloors, now }) {
-  const pl500 = loadPl500List();
-  const rows = pl500.constituents.map((constituent) => {
+function buildHl500IndexQuote({ prices, previousQuote, priceFloors, now }) {
+  const hl500 = loadHl500List();
+  const rows = hl500.constituents.map((constituent) => {
     const quote = prices[constituent.id];
     const rawPrice = Number(quote?.rawPrice || quote?.price || Math.round(constituent.seedPriceUsd * PRICE_SCALE));
     const live = Boolean(
@@ -820,7 +784,7 @@ function buildPl500IndexQuote({ prices, previousQuote, priceFloors, now }) {
   });
   const rawPrice = rows.reduce((sum, row) => sum + row.rawPrice, 0);
   const liveConstituentCount = rows.filter((row) => row.live).length;
-  const complete = liveConstituentCount === pl500.constituents.length;
+  const complete = liveConstituentCount === hl500.constituents.length;
 
   if (!complete) {
     return {
@@ -829,13 +793,13 @@ function buildPl500IndexQuote({ prices, previousQuote, priceFloors, now }) {
       ewma: rawPrice / PRICE_SCALE,
       lastUpdateTime: now,
       sourceObservedAt: now,
-      source: "user-top500-list",
+      source: "hoodliquid-hl500-seed",
       indicative: true,
       tradable: false,
       method: "seed-and-resolved-constituent-sum",
-      constituentCount: pl500.constituents.length,
+      constituentCount: hl500.constituents.length,
       liveConstituentCount,
-      seedTotalUsd: pl500.seedTotalUsd
+      seedTotalUsd: hl500.seedTotalUsd
     };
   }
 
@@ -848,30 +812,30 @@ function buildPl500IndexQuote({ prices, previousQuote, priceFloors, now }) {
       ewma: rawPrice / PRICE_SCALE,
       lastUpdateTime: now,
       sourceObservedAt: now,
-      source: "user-top500-list",
+      source: "hoodliquid-hl500-seed",
       indicative: true,
       tradable: false,
       method: "seed-and-resolved-constituent-sum",
-      constituentCount: pl500.constituents.length,
+      constituentCount: hl500.constituents.length,
       liveConstituentCount,
-      seedTotalUsd: pl500.seedTotalUsd
+      seedTotalUsd: hl500.seedTotalUsd
     };
   }
   const isRepeatedObservation =
-    previousQuote?.source === "tcgplayer-index" && Number(previousQuote.sourceObservedAt || 0) === observedAt;
+    previousQuote?.source === "hoodliquid-hl500" && Number(previousQuote.sourceObservedAt || 0) === observedAt;
   if (isRepeatedObservation) return previousQuote;
 
   return {
-    ...smoothQuote(rawPrice, previousQuote, observedAt, "tcgplayer-index", {
-      priceFloor: getPriceFloor("PL500", priceFloors),
+    ...smoothQuote(rawPrice, previousQuote, observedAt, "hoodliquid-hl500", {
+      priceFloor: getPriceFloor("HL500", priceFloors),
       metadata: {
         sourceObservedAt: observedAt,
-        constituentCount: pl500.constituents.length,
+        constituentCount: hl500.constituents.length,
         liveConstituentCount,
         method: "raw-constituent-sum-then-ewma"
       }
     }),
-    constituentCount: pl500.constituents.length,
+    constituentCount: hl500.constituents.length,
     liveConstituentCount
   };
 }
@@ -893,7 +857,7 @@ function isPoketraceSource(source) {
 }
 
 function isTcgplayerSource(source) {
-  return source === "tcgplayer-playwright" || source === "tcgplayer-api" || source === "tcgplayer-index";
+  return source === "tcgplayer-playwright" || source === "tcgplayer-api" || source === "hoodliquid-hl500";
 }
 
 function appendHistory(payload, cycleTimestamp) {
@@ -969,7 +933,7 @@ module.exports = {
   allowPlaywrightFallback,
   allowPlaywrightScraping,
   assertPlaywrightPermission,
-  buildPl500IndexQuote,
+  buildHl500IndexQuote,
   crossSourceStatus,
   extractMarketPrice,
   isKeeperActionDue,

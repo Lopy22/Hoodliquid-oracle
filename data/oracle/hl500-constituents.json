@@ -1,13 +1,13 @@
 {
   "version": 1,
-  "source": "tcgplayer-bestseller-top-500-seed",
+  "source": "hoodliquid-hl500-constituent-seed",
   "count": 500,
   "apiPricedTargetCount": 492,
   "snapshotExceptionTargetCount": 8,
   "seedTotalUsd": 103633.06,
   "constituents": [
     {
-      "id": "PL500-001",
+      "id": "HL500-001",
       "sourceNumber": 185,
       "card": "Shining Tyranitar",
       "set": "Neo Destiny",
@@ -15,7 +15,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-002",
+      "id": "HL500-002",
       "sourceNumber": 375,
       "card": "Shining Charizard",
       "set": "Neo Destiny",
@@ -23,7 +23,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-003",
+      "id": "HL500-003",
       "sourceNumber": 256,
       "card": "Mew Star (Delta Species)",
       "set": "Dragon Frontiers",
@@ -31,7 +31,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-004",
+      "id": "HL500-004",
       "sourceNumber": 201,
       "card": "Shining Mewtwo",
       "set": "Neo Destiny",
@@ -39,7 +39,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-005",
+      "id": "HL500-005",
       "sourceNumber": 65,
       "card": "Latias & Latios GX (Alternate Full Art)",
       "set": "SM - Team Up",
@@ -47,7 +47,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-006",
+      "id": "HL500-006",
       "sourceNumber": 18,
       "card": "Umbreon VMAX (Alternate Art Secret)",
       "set": "SWSH07: Evolving Skies",
@@ -55,7 +55,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-007",
+      "id": "HL500-007",
       "sourceNumber": 126,
       "card": "Shining Celebi",
       "set": "Neo Destiny",
@@ -63,7 +63,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-008",
+      "id": "HL500-008",
       "sourceNumber": 26,
       "card": "Lugia",
       "set": "Neo Genesis",
@@ -71,7 +71,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-009",
+      "id": "HL500-009",
       "sourceNumber": 8,
       "card": "Umbreon ex - 161/131",
       "set": "SV: Prismatic Evolutions",
@@ -79,7 +79,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-010",
+      "id": "HL500-010",
       "sourceNumber": 195,
       "card": "Gengar & Mimikyu GX (Alternate Full Art)",
       "set": "SM - Team Up",
@@ -87,7 +87,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-011",
+      "id": "HL500-011",
       "sourceNumber": 91,
       "card": "Umbreon (13)",
       "set": "Neo Discovery",
@@ -95,7 +95,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-012",
+      "id": "HL500-012",
       "sourceNumber": 5,
       "card": "Mega Gengar ex - 284/217",
       "set": "ME: Ascended Heroes",
@@ -103,7 +103,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-013",
+      "id": "HL500-013",
       "sourceNumber": 4,
       "card": "Pikachu ex - 276/217",
       "set": "ME: Ascended Heroes",
@@ -111,7 +111,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-014",
+      "id": "HL500-014",
       "sourceNumber": 209,
       "card": "Pikachu with Grey Felt Hat",
       "set": "SV: Scarlet & Violet Promo Cards",
@@ -119,7 +119,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-015",
+      "id": "HL500-015",
       "sourceNumber": 137,
       "card": "Rayquaza VMAX (Alternate Art Secret)",
       "set": "SWSH07: Evolving Skies",
@@ -127,7 +127,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-016",
+      "id": "HL500-016",
       "sourceNumber": 6,
       "card": "Mew ex - 232/091",
       "set": "SV: Paldean Fates",
@@ -135,7 +135,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-017",
+      "id": "HL500-017",
       "sourceNumber": 191,
       "card": "M Rayquaza EX (Shiny Full Art)",
       "set": "XY - Ancient Origins",
@@ -143,7 +143,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-018",
+      "id": "HL500-018",
       "sourceNumber": 44,
       "card": "Gengar VMAX (Alternate Art Secret)",
       "set": "SWSH08: Fusion Strike",
@@ -151,7 +151,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-019",
+      "id": "HL500-019",
       "sourceNumber": 249,
       "card": "Blaine's Charizard",
       "set": "Gym Challenge",
@@ -159,7 +159,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-020",
+      "id": "HL500-020",
       "sourceNumber": 7,
       "card": "Mega Dragonite ex - 290/217",
       "set": "ME: Ascended Heroes",
@@ -167,7 +167,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-021",
+      "id": "HL500-021",
       "sourceNumber": 381,
       "card": "M Charizard EX (X) (Secret)",
       "set": "XY - Flashfire",
@@ -175,7 +175,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-022",
+      "id": "HL500-022",
       "sourceNumber": 2,
       "card": "Mega Charizard X ex - 125/094",
       "set": "ME02: Phantasmal Flames",
@@ -183,7 +183,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-023",
+      "id": "HL500-023",
       "sourceNumber": 390,
       "card": "Magikarp & Wailord GX (Alternate Full Art)",
       "set": "SM - Team Up",
@@ -191,7 +191,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-024",
+      "id": "HL500-024",
       "sourceNumber": 94,
       "card": "Ninetales",
       "set": "Base Set (Shadowless)",
@@ -199,7 +199,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-025",
+      "id": "HL500-025",
       "sourceNumber": 475,
       "card": "Dragonite (9)",
       "set": "Expedition",
@@ -207,7 +207,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-026",
+      "id": "HL500-026",
       "sourceNumber": 324,
       "card": "Giratina V (Alternate Full Art)",
       "set": "SWSH11: Lost Origin",
@@ -215,7 +215,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-027",
+      "id": "HL500-027",
       "sourceNumber": 145,
       "card": "Gengar EX (114 Full Art)",
       "set": "XY - Phantom Forces",
@@ -223,7 +223,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-028",
+      "id": "HL500-028",
       "sourceNumber": 443,
       "card": "Gengar (13)",
       "set": "Expedition",
@@ -231,7 +231,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-029",
+      "id": "HL500-029",
       "sourceNumber": 64,
       "card": "Mega Charizard Y ex - 294/217",
       "set": "ME: Ascended Heroes",
@@ -239,7 +239,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-030",
+      "id": "HL500-030",
       "sourceNumber": 16,
       "card": "Charizard",
       "set": "Base Set",
@@ -247,7 +247,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-031",
+      "id": "HL500-031",
       "sourceNumber": 114,
       "card": "Sabrina's Gengar",
       "set": "Gym Heroes",
@@ -255,7 +255,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-032",
+      "id": "HL500-032",
       "sourceNumber": 127,
       "card": "Gyarados",
       "set": "Base Set (Shadowless)",
@@ -263,7 +263,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-033",
+      "id": "HL500-033",
       "sourceNumber": 456,
       "card": "Zapdos",
       "set": "Base Set (Shadowless)",
@@ -271,7 +271,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-034",
+      "id": "HL500-034",
       "sourceNumber": 251,
       "card": "Dark Scizor",
       "set": "Neo Destiny",
@@ -279,7 +279,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-035",
+      "id": "HL500-035",
       "sourceNumber": 283,
       "card": "Victini - 171/086",
       "set": "SV: Black Bolt",
@@ -287,7 +287,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-036",
+      "id": "HL500-036",
       "sourceNumber": 28,
       "card": "Team Rocket's Mewtwo ex - 231/182",
       "set": "SV10: Destined Rivals",
@@ -295,7 +295,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-037",
+      "id": "HL500-037",
       "sourceNumber": 426,
       "card": "Charizard (Delta Species)",
       "set": "Crystal Guardians",
@@ -303,7 +303,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-038",
+      "id": "HL500-038",
       "sourceNumber": 242,
       "card": "Zekrom ex - 172/086",
       "set": "SV: Black Bolt",
@@ -311,7 +311,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-039",
+      "id": "HL500-039",
       "sourceNumber": 49,
       "card": "Lugia V (Alternate Full Art)",
       "set": "SWSH12: Silver Tempest",
@@ -319,7 +319,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-040",
+      "id": "HL500-040",
       "sourceNumber": 305,
       "card": "Umbreon (Prime)",
       "set": "Undaunted",
@@ -327,7 +327,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-041",
+      "id": "HL500-041",
       "sourceNumber": 216,
       "card": "Dragonite V (Alternate Full Art)",
       "set": "SWSH07: Evolving Skies",
@@ -335,7 +335,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-042",
+      "id": "HL500-042",
       "sourceNumber": 59,
       "card": "Sylveon ex - 156/131",
       "set": "SV: Prismatic Evolutions",
@@ -343,7 +343,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-043",
+      "id": "HL500-043",
       "sourceNumber": 310,
       "card": "Raikou (13)",
       "set": "Neo Revelation",
@@ -351,7 +351,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-044",
+      "id": "HL500-044",
       "sourceNumber": 119,
       "card": "Team Aqua's Kyogre EX",
       "set": "Double Crisis",
@@ -359,7 +359,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-045",
+      "id": "HL500-045",
       "sourceNumber": 449,
       "card": "Victini - 172/086",
       "set": "SV: White Flare",
@@ -367,7 +367,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-046",
+      "id": "HL500-046",
       "sourceNumber": 186,
       "card": "Reshiram ex - 173/086",
       "set": "SV: White Flare",
@@ -375,7 +375,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-047",
+      "id": "HL500-047",
       "sourceNumber": 151,
       "card": "Team Magma's Groudon EX",
       "set": "Double Crisis",
@@ -383,7 +383,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-048",
+      "id": "HL500-048",
       "sourceNumber": 3,
       "card": "Charizard ex - 199/165",
       "set": "SV: Scarlet & Violet 151",
@@ -391,7 +391,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-049",
+      "id": "HL500-049",
       "sourceNumber": 379,
       "card": "Gengar (Prime)",
       "set": "Triumphant",
@@ -399,7 +399,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-050",
+      "id": "HL500-050",
       "sourceNumber": 47,
       "card": "Pikachu ex - 277/217",
       "set": "ME: Ascended Heroes",
@@ -407,7 +407,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-051",
+      "id": "HL500-051",
       "sourceNumber": 469,
       "card": "Light Arcanine",
       "set": "Neo Destiny",
@@ -415,7 +415,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-052",
+      "id": "HL500-052",
       "sourceNumber": 76,
       "card": "Team Rocket's Mewtwo ex - 281/217",
       "set": "ME: Ascended Heroes",
@@ -423,7 +423,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-053",
+      "id": "HL500-053",
       "sourceNumber": 149,
       "card": "Rayquaza V (Alternate Full Art)",
       "set": "SWSH07: Evolving Skies",
@@ -431,7 +431,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-054",
+      "id": "HL500-054",
       "sourceNumber": 230,
       "card": "Typhlosion (18)",
       "set": "Neo Genesis",
@@ -439,7 +439,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-055",
+      "id": "HL500-055",
       "sourceNumber": 95,
       "card": "Pikachu (Red Cheeks)",
       "set": "Base Set (Shadowless)",
@@ -447,7 +447,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-056",
+      "id": "HL500-056",
       "sourceNumber": 132,
       "card": "Charizard",
       "set": "Base Set 2",
@@ -455,7 +455,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-057",
+      "id": "HL500-057",
       "sourceNumber": 168,
       "card": "Erika's Dragonair",
       "set": "Gym Heroes",
@@ -463,7 +463,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-058",
+      "id": "HL500-058",
       "sourceNumber": 445,
       "card": "Tyranitar (12)",
       "set": "Neo Discovery",
@@ -471,7 +471,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-059",
+      "id": "HL500-059",
       "sourceNumber": 46,
       "card": "Magikarp - 203/193",
       "set": "SV02: Paldea Evolved",
@@ -479,7 +479,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-060",
+      "id": "HL500-060",
       "sourceNumber": 93,
       "card": "Pikachu EX - XY124",
       "set": "XY Promos",
@@ -487,7 +487,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-061",
+      "id": "HL500-061",
       "sourceNumber": 268,
       "card": "Leafeon VMAX (Alternate Art Secret)",
       "set": "SWSH07: Evolving Skies",
@@ -495,7 +495,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-062",
+      "id": "HL500-062",
       "sourceNumber": 245,
       "card": "Espeon (1)",
       "set": "Neo Discovery",
@@ -503,7 +503,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-063",
+      "id": "HL500-063",
       "sourceNumber": 42,
       "card": "Giratina VSTAR (Secret)",
       "set": "SWSH: Crown Zenith: Galarian Gallery",
@@ -511,7 +511,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-064",
+      "id": "HL500-064",
       "sourceNumber": 155,
       "card": "Greninja ex - 214/167",
       "set": "SV06: Twilight Masquerade",
@@ -519,7 +519,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-065",
+      "id": "HL500-065",
       "sourceNumber": 410,
       "card": "Sylveon VMAX (Alternate Art Secret)",
       "set": "SWSH07: Evolving Skies",
@@ -527,7 +527,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-066",
+      "id": "HL500-066",
       "sourceNumber": 287,
       "card": "Umbreon V (Alternate Full Art)",
       "set": "SWSH07: Evolving Skies",
@@ -535,7 +535,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-067",
+      "id": "HL500-067",
       "sourceNumber": 363,
       "card": "M Rayquaza EX (105 Full Art)",
       "set": "XY - Roaring Skies",
@@ -543,7 +543,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-068",
+      "id": "HL500-068",
       "sourceNumber": 218,
       "card": "Misty's Gyarados",
       "set": "Gym Challenge",
@@ -551,7 +551,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-069",
+      "id": "HL500-069",
       "sourceNumber": 220,
       "card": "Giovanni's Gyarados",
       "set": "Gym Challenge",
@@ -559,7 +559,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-070",
+      "id": "HL500-070",
       "sourceNumber": 436,
       "card": "Mewtwo",
       "set": "Base Set (Shadowless)",
@@ -567,7 +567,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-071",
+      "id": "HL500-071",
       "sourceNumber": 32,
       "card": "Mega Charizard X ex - 130/094",
       "set": "ME02: Phantasmal Flames",
@@ -575,7 +575,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-072",
+      "id": "HL500-072",
       "sourceNumber": 20,
       "card": "Dragonite (4)",
       "set": "Fossil",
@@ -583,7 +583,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-073",
+      "id": "HL500-073",
       "sourceNumber": 35,
       "card": "Snorlax (11)",
       "set": "Jungle",
@@ -591,7 +591,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-074",
+      "id": "HL500-074",
       "sourceNumber": 146,
       "card": "Charizard V (Alternate Full Art)",
       "set": "SWSH09: Brilliant Stars",
@@ -599,7 +599,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-075",
+      "id": "HL500-075",
       "sourceNumber": 82,
       "card": "Dark Dragonite (5)",
       "set": "Team Rocket",
@@ -607,7 +607,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-076",
+      "id": "HL500-076",
       "sourceNumber": 206,
       "card": "Rocket's Scyther",
       "set": "Gym Heroes",
@@ -615,7 +615,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-077",
+      "id": "HL500-077",
       "sourceNumber": 452,
       "card": "Celebi (3)",
       "set": "Neo Revelation",
@@ -623,7 +623,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-078",
+      "id": "HL500-078",
       "sourceNumber": 1,
       "card": "Mega Greninja ex - 116/086",
       "set": "ME04: Chaos Rising",
@@ -631,7 +631,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-079",
+      "id": "HL500-079",
       "sourceNumber": 138,
       "card": "Mewtwo & Mew GX - SM191",
       "set": "SM Promos",
@@ -639,7 +639,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-080",
+      "id": "HL500-080",
       "sourceNumber": 111,
       "card": "Pikachu ex - 238/191",
       "set": "SV08: Surging Sparks",
@@ -647,7 +647,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-081",
+      "id": "HL500-081",
       "sourceNumber": 447,
       "card": "Tyranitar ex (Holo)",
       "set": "POP Series 1",
@@ -655,7 +655,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-082",
+      "id": "HL500-082",
       "sourceNumber": 144,
       "card": "Dark Charizard (4)",
       "set": "Team Rocket",
@@ -663,7 +663,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-083",
+      "id": "HL500-083",
       "sourceNumber": 277,
       "card": "Charizard ex - 234/091",
       "set": "SV: Paldean Fates",
@@ -671,7 +671,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-084",
+      "id": "HL500-084",
       "sourceNumber": 109,
       "card": "Dark Blastoise (3)",
       "set": "Team Rocket",
@@ -679,7 +679,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-085",
+      "id": "HL500-085",
       "sourceNumber": 187,
       "card": "Leafeon ex - 144/131",
       "set": "SV: Prismatic Evolutions",
@@ -687,7 +687,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-086",
+      "id": "HL500-086",
       "sourceNumber": 333,
       "card": "Espeon ex - 155/131",
       "set": "SV: Prismatic Evolutions",
@@ -695,7 +695,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-087",
+      "id": "HL500-087",
       "sourceNumber": 130,
       "card": "Mega Dragonite ex - 295/217",
       "set": "ME: Ascended Heroes",
@@ -703,7 +703,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-088",
+      "id": "HL500-088",
       "sourceNumber": 68,
       "card": "Pichu",
       "set": "Neo Genesis",
@@ -711,7 +711,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-089",
+      "id": "HL500-089",
       "sourceNumber": 467,
       "card": "Entei (6)",
       "set": "Neo Revelation",
@@ -719,7 +719,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-090",
+      "id": "HL500-090",
       "sourceNumber": 285,
       "card": "Gengar & Mimikyu GX",
       "set": "SM - Team Up",
@@ -727,7 +727,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-091",
+      "id": "HL500-091",
       "sourceNumber": 162,
       "card": "Blaine's Arcanine",
       "set": "Gym Challenge",
@@ -735,7 +735,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-092",
+      "id": "HL500-092",
       "sourceNumber": 14,
       "card": "Mega Greninja ex - 122/086",
       "set": "ME04: Chaos Rising",
@@ -743,7 +743,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-093",
+      "id": "HL500-093",
       "sourceNumber": 250,
       "card": "Glaceon ex - 150/131",
       "set": "SV: Prismatic Evolutions",
@@ -751,7 +751,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-094",
+      "id": "HL500-094",
       "sourceNumber": 166,
       "card": "Dark Typhlosion",
       "set": "Neo Destiny",
@@ -759,7 +759,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-095",
+      "id": "HL500-095",
       "sourceNumber": 378,
       "card": "Vaporeon ex - 149/131",
       "set": "SV: Prismatic Evolutions",
@@ -767,7 +767,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-096",
+      "id": "HL500-096",
       "sourceNumber": 427,
       "card": "Glaceon VMAX (Alternate Art Secret)",
       "set": "SWSH07: Evolving Skies",
@@ -775,7 +775,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-097",
+      "id": "HL500-097",
       "sourceNumber": 66,
       "card": "Cynthia's Garchomp ex - 232/182",
       "set": "SV10: Destined Rivals",
@@ -783,7 +783,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-098",
+      "id": "HL500-098",
       "sourceNumber": 90,
       "card": "Mewtwo VSTAR",
       "set": "SWSH: Crown Zenith: Galarian Gallery",
@@ -791,7 +791,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-099",
+      "id": "HL500-099",
       "sourceNumber": 398,
       "card": "M Charizard EX (X)",
       "set": "XY - Flashfire",
@@ -799,7 +799,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-100",
+      "id": "HL500-100",
       "sourceNumber": 154,
       "card": "Umbreon & Darkrai GX - SM241",
       "set": "SM Promos",
@@ -807,7 +807,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-101",
+      "id": "HL500-101",
       "sourceNumber": 143,
       "card": "M Gengar EX",
       "set": "XY Promos",
@@ -815,7 +815,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-102",
+      "id": "HL500-102",
       "sourceNumber": 86,
       "card": "Bulbasaur",
       "set": "Base Set (Shadowless)",
@@ -823,7 +823,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-103",
+      "id": "HL500-103",
       "sourceNumber": 257,
       "card": "Zekrom ex - 166/086",
       "set": "SV: Black Bolt",
@@ -831,7 +831,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-104",
+      "id": "HL500-104",
       "sourceNumber": 252,
       "card": "Mega Lucario ex - 188/132",
       "set": "ME01: Mega Evolution",
@@ -839,7 +839,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-105",
+      "id": "HL500-105",
       "sourceNumber": 360,
       "card": "Hitmonchan",
       "set": "Base Set (Shadowless)",
@@ -847,7 +847,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-106",
+      "id": "HL500-106",
       "sourceNumber": 40,
       "card": "Gengar (5)",
       "set": "Fossil",
@@ -855,7 +855,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-107",
+      "id": "HL500-107",
       "sourceNumber": 100,
       "card": "Arceus VSTAR (Secret)",
       "set": "SWSH: Crown Zenith: Galarian Gallery",
@@ -863,7 +863,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-108",
+      "id": "HL500-108",
       "sourceNumber": 254,
       "card": "Blastoise EX - XY122",
       "set": "XY Promos",
@@ -871,7 +871,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-109",
+      "id": "HL500-109",
       "sourceNumber": 335,
       "card": "Mew VMAX (Alternate Art Secret)",
       "set": "SWSH08: Fusion Strike",
@@ -879,7 +879,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-110",
+      "id": "HL500-110",
       "sourceNumber": 229,
       "card": "Sabrina's Alakazam",
       "set": "Gym Challenge",
@@ -887,7 +887,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-111",
+      "id": "HL500-111",
       "sourceNumber": 371,
       "card": "Togepi & Cleffa & Igglybuff GX - 143a/236",
       "set": "Alternate Art Promos",
@@ -895,7 +895,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-112",
+      "id": "HL500-112",
       "sourceNumber": 75,
       "card": "Mega Lucario ex - 179/132",
       "set": "ME01: Mega Evolution",
@@ -903,7 +903,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-113",
+      "id": "HL500-113",
       "sourceNumber": 267,
       "card": "Armored Mewtwo - SM228",
       "set": "SM Promos",
@@ -911,7 +911,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-114",
+      "id": "HL500-114",
       "sourceNumber": 281,
       "card": "Dark Raichu",
       "set": "Team Rocket",
@@ -919,7 +919,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-115",
+      "id": "HL500-115",
       "sourceNumber": 327,
       "card": "Pikachu (Secret)",
       "set": "SM - Cosmic Eclipse",
@@ -927,7 +927,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-116",
+      "id": "HL500-116",
       "sourceNumber": 358,
       "card": "Espeon V (Alternate Full Art)",
       "set": "SWSH07: Evolving Skies",
@@ -935,7 +935,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-117",
+      "id": "HL500-117",
       "sourceNumber": 307,
       "card": "Mega Gardevoir ex - 187/132",
       "set": "ME01: Mega Evolution",
@@ -943,7 +943,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-118",
+      "id": "HL500-118",
       "sourceNumber": 349,
       "card": "Rocket's Moltres",
       "set": "Gym Heroes",
@@ -951,7 +951,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-119",
+      "id": "HL500-119",
       "sourceNumber": 83,
       "card": "Blastoise",
       "set": "Base Set",
@@ -959,7 +959,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-120",
+      "id": "HL500-120",
       "sourceNumber": 389,
       "card": "Aerodactyl V (Alternate Full Art)",
       "set": "SWSH11: Lost Origin",
@@ -967,7 +967,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-121",
+      "id": "HL500-121",
       "sourceNumber": 224,
       "card": "Seismitoad - 105/086",
       "set": "SV: Black Bolt",
@@ -975,7 +975,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-122",
+      "id": "HL500-122",
       "sourceNumber": 115,
       "card": "Pikachu & Zekrom GX",
       "set": "SM Promos",
@@ -983,7 +983,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-123",
+      "id": "HL500-123",
       "sourceNumber": 288,
       "card": "Reshiram ex - 166/086",
       "set": "SV: White Flare",
@@ -991,7 +991,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-124",
+      "id": "HL500-124",
       "sourceNumber": 461,
       "card": "Venusaur EX - XY123",
       "set": "XY Promos",
@@ -999,7 +999,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-125",
+      "id": "HL500-125",
       "sourceNumber": 311,
       "card": "Rayquaza VMAX",
       "set": "SWSH12: Silver Tempest Trainer Gallery",
@@ -1007,7 +1007,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-126",
+      "id": "HL500-126",
       "sourceNumber": 52,
       "card": "Charizard",
       "set": "Celebrations: Classic Collection",
@@ -1015,7 +1015,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-127",
+      "id": "HL500-127",
       "sourceNumber": 84,
       "card": "Jolteon (4)",
       "set": "Jungle",
@@ -1023,7 +1023,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-128",
+      "id": "HL500-128",
       "sourceNumber": 147,
       "card": "Lillie's Clefairy ex - 280/217",
       "set": "ME: Ascended Heroes",
@@ -1031,7 +1031,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-129",
+      "id": "HL500-129",
       "sourceNumber": 48,
       "card": "Articuno (2)",
       "set": "Fossil",
@@ -1039,7 +1039,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-130",
+      "id": "HL500-130",
       "sourceNumber": 322,
       "card": "Flareon ex - 146/131",
       "set": "SV: Prismatic Evolutions",
@@ -1047,7 +1047,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-131",
+      "id": "HL500-131",
       "sourceNumber": 396,
       "card": "Slowking",
       "set": "Neo Genesis",
@@ -1055,7 +1055,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-132",
+      "id": "HL500-132",
       "sourceNumber": 89,
       "card": "Mega Gardevoir ex - 178/132",
       "set": "ME01: Mega Evolution",
@@ -1063,7 +1063,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-133",
+      "id": "HL500-133",
       "sourceNumber": 11,
       "card": "Meowth ex - 121/088",
       "set": "ME03: Perfect Order",
@@ -1071,7 +1071,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-134",
+      "id": "HL500-134",
       "sourceNumber": 464,
       "card": "Jolteon ex - 153/131",
       "set": "SV: Prismatic Evolutions",
@@ -1079,7 +1079,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-135",
+      "id": "HL500-135",
       "sourceNumber": 471,
       "card": "Giovanni's Persian",
       "set": "Gym Challenge",
@@ -1087,7 +1087,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-136",
+      "id": "HL500-136",
       "sourceNumber": 141,
       "card": "Latias ex - 239/191",
       "set": "SV08: Surging Sparks",
@@ -1095,7 +1095,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-137",
+      "id": "HL500-137",
       "sourceNumber": 77,
       "card": "N's Zoroark ex - 286/217",
       "set": "ME: Ascended Heroes",
@@ -1103,7 +1103,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-138",
+      "id": "HL500-138",
       "sourceNumber": 88,
       "card": "Ethan's Ho-Oh ex - 230/182",
       "set": "SV10: Destined Rivals",
@@ -1111,7 +1111,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-139",
+      "id": "HL500-139",
       "sourceNumber": 417,
       "card": "Eevee ex - 167/131",
       "set": "SV: Prismatic Evolutions",
@@ -1119,7 +1119,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-140",
+      "id": "HL500-140",
       "sourceNumber": 444,
       "card": "Sabrina's Gengar",
       "set": "Gym Challenge",
@@ -1127,7 +1127,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-141",
+      "id": "HL500-141",
       "sourceNumber": 124,
       "card": "Mega Feraligatr ex - 274/217",
       "set": "ME: Ascended Heroes",
@@ -1135,7 +1135,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-142",
+      "id": "HL500-142",
       "sourceNumber": 282,
       "card": "Gardevoir ex - 233/091",
       "set": "SV: Paldean Fates",
@@ -1143,7 +1143,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-143",
+      "id": "HL500-143",
       "sourceNumber": 405,
       "card": "Perrin - 220/167",
       "set": "SV06: Twilight Masquerade",
@@ -1151,7 +1151,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-144",
+      "id": "HL500-144",
       "sourceNumber": 99,
       "card": "Moltres (12)",
       "set": "Fossil",
@@ -1159,7 +1159,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-145",
+      "id": "HL500-145",
       "sourceNumber": 80,
       "card": "Mega Venusaur ex - 177/132",
       "set": "ME01: Mega Evolution",
@@ -1167,7 +1167,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-146",
+      "id": "HL500-146",
       "sourceNumber": 306,
       "card": "Magikarp",
       "set": "Base Set (Shadowless)",
@@ -1175,7 +1175,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-147",
+      "id": "HL500-147",
       "sourceNumber": 376,
       "card": "Roaring Moon ex",
       "set": "SV: Prismatic Evolutions",
@@ -1183,7 +1183,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-148",
+      "id": "HL500-148",
       "sourceNumber": 223,
       "card": "Mew EX (Full Art)",
       "set": "Legendary Treasures: Radiant Collection",
@@ -1191,7 +1191,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-149",
+      "id": "HL500-149",
       "sourceNumber": 213,
       "card": "Flareon EX (Full Art)",
       "set": "Generations: Radiant Collection",
@@ -1199,7 +1199,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-150",
+      "id": "HL500-150",
       "sourceNumber": 345,
       "card": "Rayquaza GX - 177a/168",
       "set": "Alternate Art Promos",
@@ -1207,7 +1207,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-151",
+      "id": "HL500-151",
       "sourceNumber": 36,
       "card": "Mega Zygarde ex - 124/088",
       "set": "ME03: Perfect Order",
@@ -1215,7 +1215,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-152",
+      "id": "HL500-152",
       "sourceNumber": 454,
       "card": "Pikachu",
       "set": "Base Set (Shadowless)",
@@ -1223,7 +1223,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-153",
+      "id": "HL500-153",
       "sourceNumber": 500,
       "card": "Misty (18)",
       "set": "Gym Heroes",
@@ -1231,7 +1231,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-154",
+      "id": "HL500-154",
       "sourceNumber": 174,
       "card": "Moltres & Zapdos & Articuno GX",
       "set": "SM Promos",
@@ -1239,7 +1239,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-155",
+      "id": "HL500-155",
       "sourceNumber": 128,
       "card": "Sylveon EX (Full Art)",
       "set": "Generations: Radiant Collection",
@@ -1247,7 +1247,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-156",
+      "id": "HL500-156",
       "sourceNumber": 382,
       "card": "Eevee & Snorlax GX - SM169",
       "set": "SM Promos",
@@ -1255,7 +1255,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-157",
+      "id": "HL500-157",
       "sourceNumber": 234,
       "card": "Reshiram & Charizard GX - SM201",
       "set": "SM Promos",
@@ -1263,7 +1263,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-158",
+      "id": "HL500-158",
       "sourceNumber": 31,
       "card": "Blastoise ex - 200/165",
       "set": "SV: Scarlet & Violet 151",
@@ -1271,7 +1271,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-159",
+      "id": "HL500-159",
       "sourceNumber": 92,
       "card": "Dark Charizard (21)",
       "set": "Team Rocket",
@@ -1279,7 +1279,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-160",
+      "id": "HL500-160",
       "sourceNumber": 17,
       "card": "Vaporeon (12)",
       "set": "Jungle",
@@ -1287,7 +1287,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-161",
+      "id": "HL500-161",
       "sourceNumber": 325,
       "card": "Pikachu - SM162",
       "set": "SM Promos",
@@ -1295,7 +1295,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-162",
+      "id": "HL500-162",
       "sourceNumber": 122,
       "card": "Flareon (3)",
       "set": "Jungle",
@@ -1303,7 +1303,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-163",
+      "id": "HL500-163",
       "sourceNumber": 255,
       "card": "Reshiram (Full Art)",
       "set": "Legendary Treasures: Radiant Collection",
@@ -1311,7 +1311,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-164",
+      "id": "HL500-164",
       "sourceNumber": 133,
       "card": "Venusaur",
       "set": "Base Set",
@@ -1319,7 +1319,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-165",
+      "id": "HL500-165",
       "sourceNumber": 357,
       "card": "Eevee GX - SM233",
       "set": "SM Promos",
@@ -1327,7 +1327,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-166",
+      "id": "HL500-166",
       "sourceNumber": 402,
       "card": "Charizard VMAX",
       "set": "Shining Fates: Shiny Vault",
@@ -1335,7 +1335,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-167",
+      "id": "HL500-167",
       "sourceNumber": 438,
       "card": "Gengar (Cosmos Holo) (Gamestop Exclusive)",
       "set": "Miscellaneous Cards & Products",
@@ -1343,7 +1343,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-168",
+      "id": "HL500-168",
       "sourceNumber": 337,
       "card": "Dark Alakazam (1)",
       "set": "Team Rocket",
@@ -1351,7 +1351,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-169",
+      "id": "HL500-169",
       "sourceNumber": 446,
       "card": "Rocket's Snorlax",
       "set": "Gym Heroes",
@@ -1359,7 +1359,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-170",
+      "id": "HL500-170",
       "sourceNumber": 142,
       "card": "M Charizard EX (Full Art)",
       "set": "XY - Evolutions",
@@ -1367,7 +1367,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-171",
+      "id": "HL500-171",
       "sourceNumber": 192,
       "card": "Milotic ex - 237/191",
       "set": "SV08: Surging Sparks",
@@ -1375,7 +1375,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-172",
+      "id": "HL500-172",
       "sourceNumber": 365,
       "card": "Dragapult ex - 165/131",
       "set": "SV: Prismatic Evolutions",
@@ -1383,7 +1383,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-173",
+      "id": "HL500-173",
       "sourceNumber": 57,
       "card": "Charizard ex - 223/197",
       "set": "SV03: Obsidian Flames",
@@ -1391,7 +1391,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-174",
+      "id": "HL500-174",
       "sourceNumber": 163,
       "card": "Rayquaza EX (Shiny)",
       "set": "XY Promos",
@@ -1399,7 +1399,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-175",
+      "id": "HL500-175",
       "sourceNumber": 107,
       "card": "Charmander",
       "set": "Base Set (Shadowless)",
@@ -1407,7 +1407,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-176",
+      "id": "HL500-176",
       "sourceNumber": 248,
       "card": "Origin Forme Dialga VSTAR (Secret)",
       "set": "SWSH: Crown Zenith: Galarian Gallery",
@@ -1415,7 +1415,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-177",
+      "id": "HL500-177",
       "sourceNumber": 102,
       "card": "Bulbasaur",
       "set": "SV07: Stellar Crown",
@@ -1423,7 +1423,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-178",
+      "id": "HL500-178",
       "sourceNumber": 39,
       "card": "Venusaur ex - 198/165",
       "set": "SV: Scarlet & Violet 151",
@@ -1431,7 +1431,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-179",
+      "id": "HL500-179",
       "sourceNumber": 323,
       "card": "Alakazam EX (Secret)",
       "set": "XY - Fates Collide",
@@ -1439,7 +1439,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-180",
+      "id": "HL500-180",
       "sourceNumber": 316,
       "card": "Squirtle",
       "set": "Base Set (Shadowless)",
@@ -1447,7 +1447,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-181",
+      "id": "HL500-181",
       "sourceNumber": 212,
       "card": "Origin Forme Palkia VSTAR (Secret)",
       "set": "SWSH: Crown Zenith: Galarian Gallery",
@@ -1455,7 +1455,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-182",
+      "id": "HL500-182",
       "sourceNumber": 167,
       "card": "Scyther (10)",
       "set": "Jungle",
@@ -1463,7 +1463,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-183",
+      "id": "HL500-183",
       "sourceNumber": 110,
       "card": "Lillie's Clefairy ex - 184/159",
       "set": "SV09: Journey Together",
@@ -1471,7 +1471,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-184",
+      "id": "HL500-184",
       "sourceNumber": 263,
       "card": "Pikachu (Full Art)",
       "set": "Generations: Radiant Collection",
@@ -1479,7 +1479,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-185",
+      "id": "HL500-185",
       "sourceNumber": 194,
       "card": "Pidgeot (8)",
       "set": "Jungle",
@@ -1487,7 +1487,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-186",
+      "id": "HL500-186",
       "sourceNumber": 421,
       "card": "Mew - XY110",
       "set": "XY Promos",
@@ -1495,7 +1495,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-187",
+      "id": "HL500-187",
       "sourceNumber": 96,
       "card": "Squirtle",
       "set": "SV07: Stellar Crown",
@@ -1503,7 +1503,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-188",
+      "id": "HL500-188",
       "sourceNumber": 408,
       "card": "Koga's Beedrill",
       "set": "Gym Challenge",
@@ -1511,7 +1511,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-189",
+      "id": "HL500-189",
       "sourceNumber": 409,
       "card": "Koga's Beedrill",
       "set": "Gym Challenge",
@@ -1519,7 +1519,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-190",
+      "id": "HL500-190",
       "sourceNumber": 15,
       "card": "Pikachu & Zekrom GX",
       "set": "SM - Team Up",
@@ -1527,7 +1527,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-191",
+      "id": "HL500-191",
       "sourceNumber": 291,
       "card": "Charmeleon",
       "set": "Base Set (Shadowless)",
@@ -1535,7 +1535,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-192",
+      "id": "HL500-192",
       "sourceNumber": 67,
       "card": "Greninja ex - 132",
       "set": "SV: Scarlet & Violet Promo Cards",
@@ -1543,7 +1543,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-193",
+      "id": "HL500-193",
       "sourceNumber": 217,
       "card": "Team Rocket's Moltres ex - 229/182",
       "set": "SV10: Destined Rivals",
@@ -1551,7 +1551,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-194",
+      "id": "HL500-194",
       "sourceNumber": 295,
       "card": "Espeon & Deoxys GX - SM240",
       "set": "SM Promos",
@@ -1559,7 +1559,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-195",
+      "id": "HL500-195",
       "sourceNumber": 474,
       "card": "Pikachu V",
       "set": "SWSH11: Lost Origin Trainer Gallery",
@@ -1567,7 +1567,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-196",
+      "id": "HL500-196",
       "sourceNumber": 231,
       "card": "Team Rocket's Nidoking ex - 233/182",
       "set": "SV10: Destined Rivals",
@@ -1575,7 +1575,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-197",
+      "id": "HL500-197",
       "sourceNumber": 24,
       "card": "Ancient Mew",
       "set": "Miscellaneous Cards & Products",
@@ -1583,7 +1583,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-198",
+      "id": "HL500-198",
       "sourceNumber": 63,
       "card": "Umbreon Star",
       "set": "Celebrations: Classic Collection",
@@ -1591,7 +1591,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-199",
+      "id": "HL500-199",
       "sourceNumber": 37,
       "card": "Charmander - 168/165",
       "set": "SV: Scarlet & Violet 151",
@@ -1599,7 +1599,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-200",
+      "id": "HL500-200",
       "sourceNumber": 116,
       "card": "Zapdos (15)",
       "set": "Fossil",
@@ -1607,7 +1607,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-201",
+      "id": "HL500-201",
       "sourceNumber": 170,
       "card": "Darkrai VSTAR",
       "set": "SWSH: Crown Zenith: Galarian Gallery",
@@ -1615,7 +1615,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-202",
+      "id": "HL500-202",
       "sourceNumber": 54,
       "card": "Zapdos ex - 202/165",
       "set": "SV: Scarlet & Violet 151",
@@ -1623,7 +1623,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-203",
+      "id": "HL500-203",
       "sourceNumber": 164,
       "card": "Raichu (14)",
       "set": "Fossil",
@@ -1631,7 +1631,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-204",
+      "id": "HL500-204",
       "sourceNumber": 489,
       "card": "Shining Rayquaza",
       "set": "Shining Legends",
@@ -1639,7 +1639,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-205",
+      "id": "HL500-205",
       "sourceNumber": 53,
       "card": "Squirtle - 170/165",
       "set": "SV: Scarlet & Violet 151",
@@ -1647,7 +1647,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-206",
+      "id": "HL500-206",
       "sourceNumber": 434,
       "card": "Groudon - 199/182",
       "set": "SV04: Paradox Rift",
@@ -1655,7 +1655,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-207",
+      "id": "HL500-207",
       "sourceNumber": 10,
       "card": "Psyduck - 226/217",
       "set": "ME: Ascended Heroes",
@@ -1663,7 +1663,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-208",
+      "id": "HL500-208",
       "sourceNumber": 326,
       "card": "Mew (9)",
       "set": "WoTC Promo",
@@ -1671,7 +1671,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-209",
+      "id": "HL500-209",
       "sourceNumber": 477,
       "card": "Mew V (Alternate Full Art)",
       "set": "SWSH08: Fusion Strike",
@@ -1679,7 +1679,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-210",
+      "id": "HL500-210",
       "sourceNumber": 204,
       "card": "Haunter (6)",
       "set": "Fossil",
@@ -1687,7 +1687,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-211",
+      "id": "HL500-211",
       "sourceNumber": 173,
       "card": "Gastly - 177/162",
       "set": "SV05: Temporal Forces",
@@ -1695,7 +1695,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-212",
+      "id": "HL500-212",
       "sourceNumber": 198,
       "card": "Nidoqueen (7)",
       "set": "Jungle",
@@ -1703,7 +1703,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-213",
+      "id": "HL500-213",
       "sourceNumber": 407,
       "card": "Umbreon VMAX",
       "set": "SWSH09: Brilliant Stars Trainer Gallery",
@@ -1711,7 +1711,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-214",
+      "id": "HL500-214",
       "sourceNumber": 236,
       "card": "Ditto (3)",
       "set": "Fossil",
@@ -1719,7 +1719,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-215",
+      "id": "HL500-215",
       "sourceNumber": 237,
       "card": "Clefable (1)",
       "set": "Jungle",
@@ -1727,7 +1727,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-216",
+      "id": "HL500-216",
       "sourceNumber": 290,
       "card": "M Gardevoir EX (Full Art)",
       "set": "Generations: Radiant Collection",
@@ -1735,7 +1735,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-217",
+      "id": "HL500-217",
       "sourceNumber": 399,
       "card": "Maushold - 226/193",
       "set": "SV02: Paldea Evolved",
@@ -1743,7 +1743,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-218",
+      "id": "HL500-218",
       "sourceNumber": 193,
       "card": "Steven's Metagross ex",
       "set": "ME: Ascended Heroes",
@@ -1751,7 +1751,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-219",
+      "id": "HL500-219",
       "sourceNumber": 30,
       "card": "Lapras (10)",
       "set": "Fossil",
@@ -1759,7 +1759,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-220",
+      "id": "HL500-220",
       "sourceNumber": 435,
       "card": "N's Zekrom - 031 (Pokemon Center Exclusive)",
       "set": "ME: Mega Evolution Promo",
@@ -1767,7 +1767,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-221",
+      "id": "HL500-221",
       "sourceNumber": 293,
       "card": "Victreebel (14)",
       "set": "Jungle",
@@ -1775,7 +1775,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-222",
+      "id": "HL500-222",
       "sourceNumber": 165,
       "card": "Kabutops (9)",
       "set": "Fossil",
@@ -1783,7 +1783,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-223",
+      "id": "HL500-223",
       "sourceNumber": 208,
       "card": "Mega Meganium ex - 272/217",
       "set": "ME: Ascended Heroes",
@@ -1791,7 +1791,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-224",
+      "id": "HL500-224",
       "sourceNumber": 484,
       "card": "Celebi V (Alternate Full Art)",
       "set": "SWSH08: Fusion Strike",
@@ -1799,7 +1799,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-225",
+      "id": "HL500-225",
       "sourceNumber": 56,
       "card": "Pikachu - 173/165",
       "set": "SV: Scarlet & Violet 151",
@@ -1807,7 +1807,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-226",
+      "id": "HL500-226",
       "sourceNumber": 203,
       "card": "Kingdra ex - 131",
       "set": "SV: Scarlet & Violet Promo Cards",
@@ -1815,7 +1815,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-227",
+      "id": "HL500-227",
       "sourceNumber": 239,
       "card": "Mr. Mime (6)",
       "set": "Jungle",
@@ -1823,7 +1823,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-228",
+      "id": "HL500-228",
       "sourceNumber": 29,
       "card": "Charizard VSTAR - SWSH262",
       "set": "SWSH: Sword & Shield Promo Cards",
@@ -1831,7 +1831,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-229",
+      "id": "HL500-229",
       "sourceNumber": 339,
       "card": "Mega Latias ex - 181/132",
       "set": "ME01: Mega Evolution",
@@ -1839,7 +1839,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-230",
+      "id": "HL500-230",
       "sourceNumber": 485,
       "card": "Vaporeon VMAX - SWSH182",
       "set": "SWSH: Sword & Shield Promo Cards",
@@ -1847,7 +1847,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-231",
+      "id": "HL500-231",
       "sourceNumber": 233,
       "card": "Eevee - 188/167",
       "set": "SV06: Twilight Masquerade",
@@ -1855,7 +1855,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-232",
+      "id": "HL500-232",
       "sourceNumber": 370,
       "card": "Oshawott - 105/086",
       "set": "SV: White Flare",
@@ -1863,7 +1863,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-233",
+      "id": "HL500-233",
       "sourceNumber": 244,
       "card": "Vileplume (15)",
       "set": "Jungle",
@@ -1871,7 +1871,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-234",
+      "id": "HL500-234",
       "sourceNumber": 480,
       "card": "Mimikyu V",
       "set": "SWSH09: Brilliant Stars Trainer Gallery",
@@ -1879,7 +1879,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-235",
+      "id": "HL500-235",
       "sourceNumber": 34,
       "card": "Cinccino ex - 119/086",
       "set": "ME04: Chaos Rising",
@@ -1887,7 +1887,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-236",
+      "id": "HL500-236",
       "sourceNumber": 118,
       "card": "Bulbasaur - 166/165",
       "set": "SV: Scarlet & Violet 151",
@@ -1895,7 +1895,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-237",
+      "id": "HL500-237",
       "sourceNumber": 441,
       "card": "Misty's Tentacruel",
       "set": "Gym Heroes",
@@ -1903,7 +1903,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-238",
+      "id": "HL500-238",
       "sourceNumber": 304,
       "card": "Leafeon VSTAR",
       "set": "SWSH: Crown Zenith: Galarian Gallery",
@@ -1911,7 +1911,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-239",
+      "id": "HL500-239",
       "sourceNumber": 315,
       "card": "Venomoth (13)",
       "set": "Jungle",
@@ -1919,7 +1919,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-240",
+      "id": "HL500-240",
       "sourceNumber": 266,
       "card": "Gardevoir ex - 245/198",
       "set": "SV01: Scarlet & Violet Base Set",
@@ -1927,7 +1927,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-241",
+      "id": "HL500-241",
       "sourceNumber": 139,
       "card": "Dragonite (19)",
       "set": "Fossil",
@@ -1935,7 +1935,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-242",
+      "id": "HL500-242",
       "sourceNumber": 275,
       "card": "Marnie's Grimmsnarl ex",
       "set": "ME: Ascended Heroes",
@@ -1943,7 +1943,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-243",
+      "id": "HL500-243",
       "sourceNumber": 21,
       "card": "Mega Gengar ex - 269/217",
       "set": "ME: Ascended Heroes",
@@ -1951,7 +1951,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-244",
+      "id": "HL500-244",
       "sourceNumber": 494,
       "card": "Espeon (20)",
       "set": "Neo Discovery",
@@ -1959,7 +1959,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-245",
+      "id": "HL500-245",
       "sourceNumber": 332,
       "card": "Pinsir (9)",
       "set": "Jungle",
@@ -1967,7 +1967,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-246",
+      "id": "HL500-246",
       "sourceNumber": 418,
       "card": "Ash-Greninja EX - XY133",
       "set": "XY Promos",
@@ -1975,7 +1975,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-247",
+      "id": "HL500-247",
       "sourceNumber": 221,
       "card": "Alakazam ex - 201/165",
       "set": "SV: Scarlet & Violet 151",
@@ -1983,7 +1983,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-248",
+      "id": "HL500-248",
       "sourceNumber": 235,
       "card": "Alakazam",
       "set": "Base Set",
@@ -1991,7 +1991,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-249",
+      "id": "HL500-249",
       "sourceNumber": 495,
       "card": "Lt. Surge's Magneton",
       "set": "Gym Heroes",
@@ -1999,7 +1999,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-250",
+      "id": "HL500-250",
       "sourceNumber": 129,
       "card": "Charmeleon - 169/165",
       "set": "SV: Scarlet & Violet 151",
@@ -2007,7 +2007,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-251",
+      "id": "HL500-251",
       "sourceNumber": 81,
       "card": "Misty's Psyduck - 193/182",
       "set": "SV10: Destined Rivals",
@@ -2015,7 +2015,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-252",
+      "id": "HL500-252",
       "sourceNumber": 58,
       "card": "Kangaskhan (5)",
       "set": "Jungle",
@@ -2023,7 +2023,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-253",
+      "id": "HL500-253",
       "sourceNumber": 38,
       "card": "Mew ex - 053",
       "set": "SV: Scarlet & Violet Promo Cards",
@@ -2031,7 +2031,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-254",
+      "id": "HL500-254",
       "sourceNumber": 123,
       "card": "Mewtwo",
       "set": "Base Set",
@@ -2039,7 +2039,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-255",
+      "id": "HL500-255",
       "sourceNumber": 152,
       "card": "Psyduck - 175/165",
       "set": "SV: Scarlet & Violet 151",
@@ -2047,7 +2047,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-256",
+      "id": "HL500-256",
       "sourceNumber": 317,
       "card": "Hitmonlee (7)",
       "set": "Fossil",
@@ -2055,7 +2055,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-257",
+      "id": "HL500-257",
       "sourceNumber": 246,
       "card": "Team Rocket's Moltres ex - 229/182 (Destined Rivals Stamp)",
       "set": "Miscellaneous Cards & Products",
@@ -2063,7 +2063,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-258",
+      "id": "HL500-258",
       "sourceNumber": 420,
       "card": "Wigglytuff (16)",
       "set": "Jungle",
@@ -2071,7 +2071,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-259",
+      "id": "HL500-259",
       "sourceNumber": 134,
       "card": "Gengar (20)",
       "set": "Fossil",
@@ -2079,7 +2079,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-260",
+      "id": "HL500-260",
       "sourceNumber": 416,
       "card": "Iono's Bellibolt ex - 279/217",
       "set": "ME: Ascended Heroes",
@@ -2087,7 +2087,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-261",
+      "id": "HL500-261",
       "sourceNumber": 366,
       "card": "Mega Hawlucha ex - 283/217",
       "set": "ME: Ascended Heroes",
@@ -2095,7 +2095,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-262",
+      "id": "HL500-262",
       "sourceNumber": 414,
       "card": "Mega Scrafty ex - 285/217",
       "set": "ME: Ascended Heroes",
@@ -2103,7 +2103,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-263",
+      "id": "HL500-263",
       "sourceNumber": 350,
       "card": "Team Rocket's Crobat ex - 234/182",
       "set": "SV10: Destined Rivals",
@@ -2111,7 +2111,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-264",
+      "id": "HL500-264",
       "sourceNumber": 271,
       "card": "Aerodactyl (1)",
       "set": "Fossil",
@@ -2119,7 +2119,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-265",
+      "id": "HL500-265",
       "sourceNumber": 455,
       "card": "Iron Valiant ex",
       "set": "SV: Prismatic Evolutions",
@@ -2127,7 +2127,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-266",
+      "id": "HL500-266",
       "sourceNumber": 422,
       "card": "Fezandipiti ex - 288/217",
       "set": "ME: Ascended Heroes",
@@ -2135,7 +2135,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-267",
+      "id": "HL500-267",
       "sourceNumber": 458,
       "card": "Mega Emboar ex - 273/217",
       "set": "ME: Ascended Heroes",
@@ -2143,7 +2143,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-268",
+      "id": "HL500-268",
       "sourceNumber": 301,
       "card": "Gengar EX",
       "set": "XY - Phantom Forces",
@@ -2151,7 +2151,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-269",
+      "id": "HL500-269",
       "sourceNumber": 297,
       "card": "Lillie's Determination - 184/132",
       "set": "ME01: Mega Evolution",
@@ -2159,7 +2159,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-270",
+      "id": "HL500-270",
       "sourceNumber": 387,
       "card": "Mega Absol ex - 180/132",
       "set": "ME01: Mega Evolution",
@@ -2167,7 +2167,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-271",
+      "id": "HL500-271",
       "sourceNumber": 486,
       "card": "Mew (Secret)",
       "set": "Celebrations",
@@ -2175,7 +2175,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-272",
+      "id": "HL500-272",
       "sourceNumber": 172,
       "card": "Wartortle - 171/165",
       "set": "SV: Scarlet & Violet 151",
@@ -2183,7 +2183,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-273",
+      "id": "HL500-273",
       "sourceNumber": 354,
       "card": "Pikachu ex - 179/131",
       "set": "SV: Prismatic Evolutions",
@@ -2191,7 +2191,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-274",
+      "id": "HL500-274",
       "sourceNumber": 125,
       "card": "Mew",
       "set": "SWSH: Crown Zenith: Galarian Gallery",
@@ -2199,7 +2199,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-275",
+      "id": "HL500-275",
       "sourceNumber": 60,
       "card": "Mega Zygarde ex - 120/088",
       "set": "ME03: Perfect Order",
@@ -2207,7 +2207,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-276",
+      "id": "HL500-276",
       "sourceNumber": 262,
       "card": "Salamence ex - 187/159",
       "set": "SV09: Journey Together",
@@ -2215,7 +2215,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-277",
+      "id": "HL500-277",
       "sourceNumber": 385,
       "card": "Raichu",
       "set": "Base Set",
@@ -2223,7 +2223,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-278",
+      "id": "HL500-278",
       "sourceNumber": 312,
       "card": "Suicune V",
       "set": "SWSH: Crown Zenith: Galarian Gallery",
@@ -2231,7 +2231,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-279",
+      "id": "HL500-279",
       "sourceNumber": 292,
       "card": "Dragonite (Movie Promo)",
       "set": "WoTC Promo",
@@ -2239,7 +2239,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-280",
+      "id": "HL500-280",
       "sourceNumber": 43,
       "card": "Charmander - 044",
       "set": "SV: Scarlet & Violet Promo Cards",
@@ -2247,7 +2247,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-281",
+      "id": "HL500-281",
       "sourceNumber": 342,
       "card": "Drowzee - 210/198",
       "set": "SV01: Scarlet & Violet Base Set",
@@ -2255,7 +2255,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-282",
+      "id": "HL500-282",
       "sourceNumber": 117,
       "card": "Mega Clefable ex - 119/088",
       "set": "ME03: Perfect Order",
@@ -2263,7 +2263,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-283",
+      "id": "HL500-283",
       "sourceNumber": 460,
       "card": "Mega Kangaskhan ex - 182/132",
       "set": "ME01: Mega Evolution",
@@ -2271,7 +2271,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-284",
+      "id": "HL500-284",
       "sourceNumber": 103,
       "card": "Mega Starmie ex - 118/088",
       "set": "ME03: Perfect Order",
@@ -2279,7 +2279,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-285",
+      "id": "HL500-285",
       "sourceNumber": 319,
       "card": "Dark Blastoise (20)",
       "set": "Team Rocket",
@@ -2287,7 +2287,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-286",
+      "id": "HL500-286",
       "sourceNumber": 468,
       "card": "Mewtwo V (Alternate Full Art)",
       "set": "Pokemon GO",
@@ -2295,7 +2295,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-287",
+      "id": "HL500-287",
       "sourceNumber": 98,
       "card": "Rosa's Encouragement - 123/088",
       "set": "ME03: Perfect Order",
@@ -2303,7 +2303,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-288",
+      "id": "HL500-288",
       "sourceNumber": 393,
       "card": "Dark Dragonite (22)",
       "set": "Team Rocket",
@@ -2311,7 +2311,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-289",
+      "id": "HL500-289",
       "sourceNumber": 442,
       "card": "Hypno (8)",
       "set": "Fossil",
@@ -2319,7 +2319,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-290",
+      "id": "HL500-290",
       "sourceNumber": 219,
       "card": "Snorlax (27)",
       "set": "Jungle",
@@ -2327,7 +2327,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-291",
+      "id": "HL500-291",
       "sourceNumber": 158,
       "card": "Poliwhirl - 176/165",
       "set": "SV: Scarlet & Violet 151",
@@ -2335,7 +2335,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-292",
+      "id": "HL500-292",
       "sourceNumber": 78,
       "card": "Mega Dragalge ex - 118/086",
       "set": "ME04: Chaos Rising",
@@ -2343,7 +2343,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-293",
+      "id": "HL500-293",
       "sourceNumber": 279,
       "card": "Fennekin - 080 (Pokemon Center Exclusive)",
       "set": "ME: Mega Evolution Promo",
@@ -2351,7 +2351,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-294",
+      "id": "HL500-294",
       "sourceNumber": 431,
       "card": "Altaria ex - 253/182",
       "set": "SV04: Paradox Rift",
@@ -2359,7 +2359,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-295",
+      "id": "HL500-295",
       "sourceNumber": 377,
       "card": "Ampharos - 075 [Staff]",
       "set": "ME: Mega Evolution Promo",
@@ -2367,7 +2367,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-296",
+      "id": "HL500-296",
       "sourceNumber": 228,
       "card": "Haunter - 027",
       "set": "ME: Mega Evolution Promo",
@@ -2375,7 +2375,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-297",
+      "id": "HL500-297",
       "sourceNumber": 97,
       "card": "Charizard V - SWSH260",
       "set": "SWSH: Sword & Shield Promo Cards",
@@ -2383,7 +2383,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-298",
+      "id": "HL500-298",
       "sourceNumber": 51,
       "card": "Mega Dragonite ex - 271/217",
       "set": "ME: Ascended Heroes",
@@ -2391,7 +2391,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-299",
+      "id": "HL500-299",
       "sourceNumber": 419,
       "card": "Chansey - 187/167",
       "set": "SV06: Twilight Masquerade",
@@ -2399,7 +2399,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-300",
+      "id": "HL500-300",
       "sourceNumber": 479,
       "card": "Sprigatito - 196/193",
       "set": "SV02: Paldea Evolved",
@@ -2407,7 +2407,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-301",
+      "id": "HL500-301",
       "sourceNumber": 395,
       "card": "Charizard",
       "set": "Generations: Radiant Collection",
@@ -2415,7 +2415,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-302",
+      "id": "HL500-302",
       "sourceNumber": 331,
       "card": "Reshiram & Charizard GX",
       "set": "SM - Unbroken Bonds",
@@ -2423,7 +2423,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-303",
+      "id": "HL500-303",
       "sourceNumber": 269,
       "card": "Chansey",
       "set": "Base Set",
@@ -2431,7 +2431,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-304",
+      "id": "HL500-304",
       "sourceNumber": 169,
       "card": "Gengar",
       "set": "SWSH11: Lost Origin Trainer Gallery",
@@ -2439,7 +2439,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-305",
+      "id": "HL500-305",
       "sourceNumber": 361,
       "card": "N's Zoroark ex - 185/159",
       "set": "SV09: Journey Together",
@@ -2447,7 +2447,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-306",
+      "id": "HL500-306",
       "sourceNumber": 207,
       "card": "Ivysaur - 167/165",
       "set": "SV: Scarlet & Violet 151",
@@ -2455,7 +2455,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-307",
+      "id": "HL500-307",
       "sourceNumber": 356,
       "card": "Zapdos",
       "set": "Base Set",
@@ -2463,7 +2463,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-308",
+      "id": "HL500-308",
       "sourceNumber": 308,
       "card": "M Rayquaza EX",
       "set": "Celebrations: Classic Collection",
@@ -2471,7 +2471,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-309",
+      "id": "HL500-309",
       "sourceNumber": 470,
       "card": "Raikou V",
       "set": "SWSH: Crown Zenith: Galarian Gallery",
@@ -2479,7 +2479,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-310",
+      "id": "HL500-310",
       "sourceNumber": 482,
       "card": "Ralts - 211/198",
       "set": "SV01: Scarlet & Violet Base Set",
@@ -2487,7 +2487,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-311",
+      "id": "HL500-311",
       "sourceNumber": 472,
       "card": "Crobat - 076 [Staff]",
       "set": "ME: Mega Evolution Promo",
@@ -2495,7 +2495,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-312",
+      "id": "HL500-312",
       "sourceNumber": 140,
       "card": "Pikachu",
       "set": "SWSH: Crown Zenith: Galarian Gallery",
@@ -2503,7 +2503,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-313",
+      "id": "HL500-313",
       "sourceNumber": 190,
       "card": "Dragonair - 181/165",
       "set": "SV: Scarlet & Violet 151",
@@ -2511,7 +2511,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-314",
+      "id": "HL500-314",
       "sourceNumber": 424,
       "card": "Sabrina's Haunter",
       "set": "Gym Heroes",
@@ -2519,7 +2519,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-315",
+      "id": "HL500-315",
       "sourceNumber": 112,
       "card": "Pikachu (Secret)",
       "set": "SWSH: Crown Zenith",
@@ -2527,7 +2527,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-316",
+      "id": "HL500-316",
       "sourceNumber": 157,
       "card": "Pikachu",
       "set": "SWSH11: Lost Origin Trainer Gallery",
@@ -2535,7 +2535,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-317",
+      "id": "HL500-317",
       "sourceNumber": 159,
       "card": "Gyarados",
       "set": "Base Set",
@@ -2543,7 +2543,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-318",
+      "id": "HL500-318",
       "sourceNumber": 429,
       "card": "Jolteon (20)",
       "set": "Jungle",
@@ -2551,7 +2551,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-319",
+      "id": "HL500-319",
       "sourceNumber": 202,
       "card": "Muk (13)",
       "set": "Fossil",
@@ -2559,7 +2559,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-320",
+      "id": "HL500-320",
       "sourceNumber": 105,
       "card": "Mega Floette ex - 117/086",
       "set": "ME04: Chaos Rising",
@@ -2567,7 +2567,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-321",
+      "id": "HL500-321",
       "sourceNumber": 69,
       "card": "Mewtwo - 052",
       "set": "SV: Scarlet & Violet Promo Cards",
@@ -2575,7 +2575,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-322",
+      "id": "HL500-322",
       "sourceNumber": 197,
       "card": "Ninetales -199/197",
       "set": "SV03: Obsidian Flames",
@@ -2583,7 +2583,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-323",
+      "id": "HL500-323",
       "sourceNumber": 400,
       "card": "Eevee",
       "set": "WoTC Promo",
@@ -2591,7 +2591,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-324",
+      "id": "HL500-324",
       "sourceNumber": 496,
       "card": "Hisuian Zoroark VSTAR",
       "set": "SWSH: Crown Zenith: Galarian Gallery",
@@ -2599,7 +2599,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-325",
+      "id": "HL500-325",
       "sourceNumber": 353,
       "card": "Dark Arbok (2)",
       "set": "Team Rocket",
@@ -2607,7 +2607,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-326",
+      "id": "HL500-326",
       "sourceNumber": 465,
       "card": "Canari - 291/217",
       "set": "ME: Ascended Heroes",
@@ -2615,7 +2615,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-327",
+      "id": "HL500-327",
       "sourceNumber": 351,
       "card": "Gengar VMAX",
       "set": "SWSH08: Fusion Strike",
@@ -2623,7 +2623,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-328",
+      "id": "HL500-328",
       "sourceNumber": 238,
       "card": "Pikachu V-Union [Set of 4]",
       "set": "SWSH: Sword & Shield Promo Cards",
@@ -2631,7 +2631,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-329",
+      "id": "HL500-329",
       "sourceNumber": 296,
       "card": "Mew ex - 193/165",
       "set": "SV: Scarlet & Violet 151",
@@ -2639,7 +2639,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-330",
+      "id": "HL500-330",
       "sourceNumber": 240,
       "card": "Charizard ex - 228/197",
       "set": "SV03: Obsidian Flames",
@@ -2647,7 +2647,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-331",
+      "id": "HL500-331",
       "sourceNumber": 87,
       "card": "______'s Pikachu",
       "set": "Celebrations: Classic Collection",
@@ -2655,7 +2655,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-332",
+      "id": "HL500-332",
       "sourceNumber": 493,
       "card": "Slowpoke - 204/198",
       "set": "SV01: Scarlet & Violet Base Set",
@@ -2663,7 +2663,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-333",
+      "id": "HL500-333",
       "sourceNumber": 425,
       "card": "Charizard ex - 183/165",
       "set": "SV: Scarlet & Violet 151",
@@ -2671,7 +2671,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-334",
+      "id": "HL500-334",
       "sourceNumber": 13,
       "card": "Mega Charizard X ex - 023",
       "set": "ME: Mega Evolution Promo",
@@ -2679,7 +2679,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-335",
+      "id": "HL500-335",
       "sourceNumber": 314,
       "card": "Umbreon ex - 176",
       "set": "SV: Scarlet & Violet Promo Cards",
@@ -2687,7 +2687,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-336",
+      "id": "HL500-336",
       "sourceNumber": 136,
       "card": "AZ's Tranquility - 120/086",
       "set": "ME04: Chaos Rising",
@@ -2695,7 +2695,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-337",
+      "id": "HL500-337",
       "sourceNumber": 241,
       "card": "Cleffa - 202/197",
       "set": "SV03: Obsidian Flames",
@@ -2703,7 +2703,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-338",
+      "id": "HL500-338",
       "sourceNumber": 180,
       "card": "Charizard VMAX - SWSH261",
       "set": "SWSH: Sword & Shield Promo Cards",
@@ -2711,7 +2711,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-339",
+      "id": "HL500-339",
       "sourceNumber": 457,
       "card": "Magikarp & Wailord GX - SM166",
       "set": "Jumbo Cards",
@@ -2719,7 +2719,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-340",
+      "id": "HL500-340",
       "sourceNumber": 9,
       "card": "Charmander - 038",
       "set": "ME: Mega Evolution Promo",
@@ -2727,7 +2727,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-341",
+      "id": "HL500-341",
       "sourceNumber": 478,
       "card": "Roaring Moon ex - 251/182",
       "set": "SV04: Paradox Rift",
@@ -2735,7 +2735,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-342",
+      "id": "HL500-342",
       "sourceNumber": 183,
       "card": "Misty's Lapras - 194/182",
       "set": "SV10: Destined Rivals",
@@ -2743,7 +2743,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-343",
+      "id": "HL500-343",
       "sourceNumber": 74,
       "card": "Charizard - 11/108 (Prerelease)",
       "set": "XY Promos",
@@ -2751,7 +2751,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-344",
+      "id": "HL500-344",
       "sourceNumber": 227,
       "card": "Latios - 203/191",
       "set": "SV08: Surging Sparks",
@@ -2759,7 +2759,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-345",
+      "id": "HL500-345",
       "sourceNumber": 225,
       "card": "Ninetales",
       "set": "Base Set",
@@ -2767,7 +2767,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-346",
+      "id": "HL500-346",
       "sourceNumber": 19,
       "card": "Bulbasaur - 037",
       "set": "ME: Mega Evolution Promo",
@@ -2775,7 +2775,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-347",
+      "id": "HL500-347",
       "sourceNumber": 171,
       "card": "Jacinthe - 122/088",
       "set": "ME03: Perfect Order",
@@ -2783,7 +2783,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-348",
+      "id": "HL500-348",
       "sourceNumber": 188,
       "card": "Roxie's Performance - 121/086",
       "set": "ME04: Chaos Rising",
@@ -2791,7 +2791,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-349",
+      "id": "HL500-349",
       "sourceNumber": 153,
       "card": "Machamp - 8/102",
       "set": "Deck Exclusives",
@@ -2799,7 +2799,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-350",
+      "id": "HL500-350",
       "sourceNumber": 336,
       "card": "Pikachu ex - 219/191",
       "set": "SV08: Surging Sparks",
@@ -2807,7 +2807,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-351",
+      "id": "HL500-351",
       "sourceNumber": 101,
       "card": "Mega Charizard X ex - 109/094",
       "set": "ME02: Phantasmal Flames",
@@ -2815,7 +2815,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-352",
+      "id": "HL500-352",
       "sourceNumber": 265,
       "card": "Ethan's Typhlosion - 190/182",
       "set": "SV10: Destined Rivals",
@@ -2823,7 +2823,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-353",
+      "id": "HL500-353",
       "sourceNumber": 347,
       "card": "Charizard",
       "set": "SWSH11: Lost Origin Trainer Gallery",
@@ -2831,7 +2831,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-354",
+      "id": "HL500-354",
       "sourceNumber": 369,
       "card": "Mew ex - 205/165",
       "set": "SV: Scarlet & Violet 151",
@@ -2839,7 +2839,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-355",
+      "id": "HL500-355",
       "sourceNumber": 199,
       "card": "Entei",
       "set": "WoTC Promo",
@@ -2847,7 +2847,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-356",
+      "id": "HL500-356",
       "sourceNumber": 272,
       "card": "Team Rocket's Meowth - 203/182",
       "set": "SV10: Destined Rivals",
@@ -2855,7 +2855,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-357",
+      "id": "HL500-357",
       "sourceNumber": 352,
       "card": "Mew ex - 205/165 (151 Metal Card)",
       "set": "SV: Scarlet & Violet 151",
@@ -2863,7 +2863,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-358",
+      "id": "HL500-358",
       "sourceNumber": 388,
       "card": "Rayquaza EX",
       "set": "Dragons Exalted",
@@ -2871,7 +2871,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-359",
+      "id": "HL500-359",
       "sourceNumber": 71,
       "card": "Greninja Star",
       "set": "SWSH: Sword & Shield Promo Cards",
@@ -2879,7 +2879,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-360",
+      "id": "HL500-360",
       "sourceNumber": 25,
       "card": "Squirtle - 039",
       "set": "ME: Mega Evolution Promo",
@@ -2887,7 +2887,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-361",
+      "id": "HL500-361",
       "sourceNumber": 278,
       "card": "Dawn - 129/094",
       "set": "ME02: Phantasmal Flames",
@@ -2895,7 +2895,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-362",
+      "id": "HL500-362",
       "sourceNumber": 372,
       "card": "Vaporeon",
       "set": "SWSH09: Brilliant Stars Trainer Gallery",
@@ -2903,7 +2903,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-363",
+      "id": "HL500-363",
       "sourceNumber": 161,
       "card": "Team Rocket's Mimikyu - 238/217",
       "set": "ME: Ascended Heroes",
@@ -2911,7 +2911,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-364",
+      "id": "HL500-364",
       "sourceNumber": 232,
       "card": "Eevee ex - 174",
       "set": "SV: Scarlet & Violet Promo Cards",
@@ -2919,7 +2919,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-365",
+      "id": "HL500-365",
       "sourceNumber": 12,
       "card": "Clefairy - 094/088",
       "set": "ME03: Perfect Order",
@@ -2927,7 +2927,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-366",
+      "id": "HL500-366",
       "sourceNumber": 50,
       "card": "Pikachu ex (Pikachu 60)",
       "set": "Battle Academy 2024",
@@ -2935,7 +2935,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-367",
+      "id": "HL500-367",
       "sourceNumber": 362,
       "card": "Rayquaza",
       "set": "SWSH04: Vivid Voltage",
@@ -2943,7 +2943,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-368",
+      "id": "HL500-368",
       "sourceNumber": 284,
       "card": "Pikachu - 088",
       "set": "SV: Scarlet & Violet Promo Cards",
@@ -2951,7 +2951,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-369",
+      "id": "HL500-369",
       "sourceNumber": 394,
       "card": "Gloom - 198/197",
       "set": "SV03: Obsidian Flames",
@@ -2959,7 +2959,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-370",
+      "id": "HL500-370",
       "sourceNumber": 156,
       "card": "Articuno - 161/159",
       "set": "SV09: Journey Together",
@@ -2967,7 +2967,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-371",
+      "id": "HL500-371",
       "sourceNumber": 108,
       "card": "Bulbasaur - 133/132 (Mega Evolution Stamped)",
       "set": "Miscellaneous Cards & Products",
@@ -2975,7 +2975,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-372",
+      "id": "HL500-372",
       "sourceNumber": 451,
       "card": "Lapras",
       "set": "SWSH: Crown Zenith: Galarian Gallery",
@@ -2983,7 +2983,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-373",
+      "id": "HL500-373",
       "sourceNumber": 176,
       "card": "Erika's Tangela - 218/217",
       "set": "ME: Ascended Heroes",
@@ -2991,7 +2991,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-374",
+      "id": "HL500-374",
       "sourceNumber": 343,
       "card": "Charizard ex - 074",
       "set": "SV: Scarlet & Violet Promo Cards",
@@ -2999,7 +2999,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-375",
+      "id": "HL500-375",
       "sourceNumber": 22,
       "card": "Meowth",
       "set": "ME02: Phantasmal Flames",
@@ -3007,7 +3007,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-376",
+      "id": "HL500-376",
       "sourceNumber": 355,
       "card": "Gengar 094/165 (Cosmos Holo)",
       "set": "Miscellaneous Cards & Products",
@@ -3015,7 +3015,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-377",
+      "id": "HL500-377",
       "sourceNumber": 135,
       "card": "Lillie's Determination - 169/132",
       "set": "ME01: Mega Evolution",
@@ -3023,7 +3023,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-378",
+      "id": "HL500-378",
       "sourceNumber": 373,
       "card": "Hitmonchan",
       "set": "Base Set",
@@ -3031,7 +3031,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-379",
+      "id": "HL500-379",
       "sourceNumber": 491,
       "card": "Radiant Charizard",
       "set": "Pokemon GO",
@@ -3039,7 +3039,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-380",
+      "id": "HL500-380",
       "sourceNumber": 189,
       "card": "Pikachu - 027",
       "set": "SV: Scarlet & Violet Promo Cards",
@@ -3047,7 +3047,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-381",
+      "id": "HL500-381",
       "sourceNumber": 344,
       "card": "Mega Sharpedo ex - 127/094",
       "set": "ME02: Phantasmal Flames",
@@ -3055,7 +3055,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-382",
+      "id": "HL500-382",
       "sourceNumber": 423,
       "card": "Mew ex",
       "set": "Celebrations: Classic Collection",
@@ -3063,7 +3063,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-383",
+      "id": "HL500-383",
       "sourceNumber": 62,
       "card": "Mega Greninja ex - 100/086",
       "set": "ME04: Chaos Rising",
@@ -3071,7 +3071,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-384",
+      "id": "HL500-384",
       "sourceNumber": 340,
       "card": "Umbreon ex - 060/131 (Prismatic Evolutions Stamp)",
       "set": "Miscellaneous Cards & Products",
@@ -3079,7 +3079,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-385",
+      "id": "HL500-385",
       "sourceNumber": 412,
       "card": "Ceruledge - 197/191",
       "set": "SV08: Surging Sparks",
@@ -3087,7 +3087,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-386",
+      "id": "HL500-386",
       "sourceNumber": 222,
       "card": "Bulbasaur - 133/132",
       "set": "ME01: Mega Evolution",
@@ -3095,7 +3095,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-387",
+      "id": "HL500-387",
       "sourceNumber": 330,
       "card": "Pidgeot ex - 225/197",
       "set": "SV03: Obsidian Flames",
@@ -3103,7 +3103,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-388",
+      "id": "HL500-388",
       "sourceNumber": 334,
       "card": "Hero's Cape",
       "set": "SV05: Temporal Forces",
@@ -3111,7 +3111,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-389",
+      "id": "HL500-389",
       "sourceNumber": 473,
       "card": "Lt. Surge's Pikachu",
       "set": "Gym Heroes",
@@ -3119,7 +3119,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-390",
+      "id": "HL500-390",
       "sourceNumber": 437,
       "card": "Team Rocket's Mewtwo ex - 213/182",
       "set": "SV10: Destined Rivals",
@@ -3127,7 +3127,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-391",
+      "id": "HL500-391",
       "sourceNumber": 397,
       "card": "Dark Vaporeon",
       "set": "Team Rocket",
@@ -3135,7 +3135,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-392",
+      "id": "HL500-392",
       "sourceNumber": 481,
       "card": "Flareon",
       "set": "SWSH09: Brilliant Stars Trainer Gallery",
@@ -3143,7 +3143,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-393",
+      "id": "HL500-393",
       "sourceNumber": 309,
       "card": "Ivysaur - 134/132",
       "set": "ME01: Mega Evolution",
@@ -3151,7 +3151,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-394",
+      "id": "HL500-394",
       "sourceNumber": 415,
       "card": "N's Reshiram - 167/159 (Journey Together Stamped)",
       "set": "Miscellaneous Cards & Products",
@@ -3159,7 +3159,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-395",
+      "id": "HL500-395",
       "sourceNumber": 498,
       "card": "Snorlax",
       "set": "SWSH11: Lost Origin Trainer Gallery",
@@ -3167,7 +3167,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-396",
+      "id": "HL500-396",
       "sourceNumber": 79,
       "card": "Snorlax - 051",
       "set": "SV: Scarlet & Violet Promo Cards",
@@ -3175,7 +3175,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-397",
+      "id": "HL500-397",
       "sourceNumber": 341,
       "card": "Ditto",
       "set": "SWSH: Crown Zenith: Galarian Gallery",
@@ -3183,7 +3183,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-398",
+      "id": "HL500-398",
       "sourceNumber": 196,
       "card": "Neo Upper Energy",
       "set": "SV05: Temporal Forces",
@@ -3191,7 +3191,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-399",
+      "id": "HL500-399",
       "sourceNumber": 175,
       "card": "Marshadow - 146/132",
       "set": "ME01: Mega Evolution",
@@ -3199,7 +3199,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-400",
+      "id": "HL500-400",
       "sourceNumber": 403,
       "card": "Mega Lopunny ex - 128/094",
       "set": "ME02: Phantasmal Flames",
@@ -3207,7 +3207,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-401",
+      "id": "HL500-401",
       "sourceNumber": 430,
       "card": "Caterpie - 172/165",
       "set": "SV: Scarlet & Violet 151",
@@ -3215,7 +3215,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-402",
+      "id": "HL500-402",
       "sourceNumber": 215,
       "card": "N's Reshiram - 167/159",
       "set": "SV09: Journey Together",
@@ -3223,7 +3223,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-403",
+      "id": "HL500-403",
       "sourceNumber": 179,
       "card": "Kabuto",
       "set": "Fossil",
@@ -3231,7 +3231,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-404",
+      "id": "HL500-404",
       "sourceNumber": 274,
       "card": "Mew VMAX",
       "set": "SWSH08: Fusion Strike",
@@ -3239,7 +3239,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-405",
+      "id": "HL500-405",
       "sourceNumber": 462,
       "card": "Rotom ex - 126/094",
       "set": "ME02: Phantasmal Flames",
@@ -3247,7 +3247,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-406",
+      "id": "HL500-406",
       "sourceNumber": 348,
       "card": "Vulpix - 138/132",
       "set": "ME01: Mega Evolution",
@@ -3255,7 +3255,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-407",
+      "id": "HL500-407",
       "sourceNumber": 294,
       "card": "Galarian Moltres - SWSH284",
       "set": "SWSH: Sword & Shield Promo Cards",
@@ -3263,7 +3263,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-408",
+      "id": "HL500-408",
       "sourceNumber": 181,
       "card": "Wailord - 162/159",
       "set": "SV09: Journey Together",
@@ -3271,7 +3271,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-409",
+      "id": "HL500-409",
       "sourceNumber": 226,
       "card": "Wailord - 162/159",
       "set": "SV09: Journey Together",
@@ -3279,7 +3279,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-410",
+      "id": "HL500-410",
       "sourceNumber": 23,
       "card": "Mega Lucario ex - 033",
       "set": "ME: Mega Evolution Promo",
@@ -3287,7 +3287,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-411",
+      "id": "HL500-411",
       "sourceNumber": 121,
       "card": "Piplup - 098/094",
       "set": "ME02: Phantasmal Flames",
@@ -3295,7 +3295,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-412",
+      "id": "HL500-412",
       "sourceNumber": 440,
       "card": "Cynthia's Roserade - 184/182",
       "set": "SV10: Destined Rivals",
@@ -3303,7 +3303,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-413",
+      "id": "HL500-413",
       "sourceNumber": 321,
       "card": "Marill - 232/217",
       "set": "ME: Ascended Heroes",
@@ -3311,7 +3311,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-414",
+      "id": "HL500-414",
       "sourceNumber": 106,
       "card": "Eevee",
       "set": "Jungle",
@@ -3319,7 +3319,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-415",
+      "id": "HL500-415",
       "sourceNumber": 448,
       "card": "Charizard ex - 056",
       "set": "SV: Scarlet & Violet Promo Cards",
@@ -3327,7 +3327,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-416",
+      "id": "HL500-416",
       "sourceNumber": 450,
       "card": "Pikachu V-UNION",
       "set": "Jumbo Cards",
@@ -3335,7 +3335,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-417",
+      "id": "HL500-417",
       "sourceNumber": 33,
       "card": "Froakie - 088/086",
       "set": "ME04: Chaos Rising",
@@ -3343,7 +3343,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-418",
+      "id": "HL500-418",
       "sourceNumber": 177,
       "card": "Meowth ex - 107/088",
       "set": "ME03: Perfect Order",
@@ -3351,7 +3351,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-419",
+      "id": "HL500-419",
       "sourceNumber": 214,
       "card": "Mimikyu - 075",
       "set": "SV: Scarlet & Violet Promo Cards",
@@ -3359,7 +3359,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-420",
+      "id": "HL500-420",
       "sourceNumber": 131,
       "card": "Unfair Stamp",
       "set": "SV06: Twilight Masquerade",
@@ -3367,7 +3367,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-421",
+      "id": "HL500-421",
       "sourceNumber": 184,
       "card": "Victini - 208",
       "set": "SV: Scarlet & Violet Promo Cards",
@@ -3375,7 +3375,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-422",
+      "id": "HL500-422",
       "sourceNumber": 70,
       "card": "Eevee - 173",
       "set": "SV: Scarlet & Violet Promo Cards",
@@ -3383,7 +3383,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-423",
+      "id": "HL500-423",
       "sourceNumber": 298,
       "card": "Team Rocket's Dugtrio - 239/217",
       "set": "ME: Ascended Heroes",
@@ -3391,7 +3391,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-424",
+      "id": "HL500-424",
       "sourceNumber": 338,
       "card": "Mega Froslass ex - 265/217",
       "set": "ME: Ascended Heroes",
@@ -3399,7 +3399,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-425",
+      "id": "HL500-425",
       "sourceNumber": 72,
       "card": "Piplup - 042",
       "set": "ME: Mega Evolution Promo",
@@ -3407,7 +3407,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-426",
+      "id": "HL500-426",
       "sourceNumber": 73,
       "card": "Piplup - 042",
       "set": "ME: Mega Evolution Promo",
@@ -3415,7 +3415,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-427",
+      "id": "HL500-427",
       "sourceNumber": 386,
       "card": "Cynthia's Spiritomb - 244/217",
       "set": "ME: Ascended Heroes",
@@ -3423,7 +3423,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-428",
+      "id": "HL500-428",
       "sourceNumber": 85,
       "card": "Oricorio ex - 024",
       "set": "ME: Mega Evolution Promo",
@@ -3431,7 +3431,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-429",
+      "id": "HL500-429",
       "sourceNumber": 41,
       "card": "Xerneas - 091/086",
       "set": "ME04: Chaos Rising",
@@ -3439,7 +3439,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-430",
+      "id": "HL500-430",
       "sourceNumber": 55,
       "card": "Frogadier - 089/086",
       "set": "ME04: Chaos Rising",
@@ -3447,7 +3447,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-431",
+      "id": "HL500-431",
       "sourceNumber": 45,
       "card": "Ampharos - 090/086",
       "set": "ME04: Chaos Rising",
@@ -3455,7 +3455,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-432",
+      "id": "HL500-432",
       "sourceNumber": 433,
       "card": "Mega Venusaur ex - 155/132",
       "set": "ME01: Mega Evolution",
@@ -3463,7 +3463,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-433",
+      "id": "HL500-433",
       "sourceNumber": 413,
       "card": "Mr. Fuji",
       "set": "Fossil",
@@ -3471,7 +3471,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-434",
+      "id": "HL500-434",
       "sourceNumber": 120,
       "card": "Poke Pad - 113/088",
       "set": "ME03: Perfect Order",
@@ -3479,7 +3479,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-435",
+      "id": "HL500-435",
       "sourceNumber": 276,
       "card": "Radiant Charizard",
       "set": "SWSH: Crown Zenith",
@@ -3487,7 +3487,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-436",
+      "id": "HL500-436",
       "sourceNumber": 459,
       "card": "Squirtle",
       "set": "Team Rocket",
@@ -3495,7 +3495,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-437",
+      "id": "HL500-437",
       "sourceNumber": 374,
       "card": "Banette - 234/217",
       "set": "ME: Ascended Heroes",
@@ -3503,7 +3503,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-438",
+      "id": "HL500-438",
       "sourceNumber": 329,
       "card": "Alakazam - 009",
       "set": "ME: Mega Evolution Promo",
@@ -3511,7 +3511,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-439",
+      "id": "HL500-439",
       "sourceNumber": 303,
       "card": "Cubone",
       "set": "Jungle",
@@ -3519,7 +3519,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-440",
+      "id": "HL500-440",
       "sourceNumber": 487,
       "card": "Scorbunny - 225/217",
       "set": "ME: Ascended Heroes",
@@ -3527,7 +3527,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-441",
+      "id": "HL500-441",
       "sourceNumber": 411,
       "card": "Dreepy - 247/217",
       "set": "ME: Ascended Heroes",
@@ -3535,7 +3535,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-442",
+      "id": "HL500-442",
       "sourceNumber": 27,
       "card": "N's Zekrom - 031",
       "set": "ME: Mega Evolution Promo",
@@ -3543,7 +3543,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-443",
+      "id": "HL500-443",
       "sourceNumber": 364,
       "card": "Budew - 221/217",
       "set": "ME: Ascended Heroes",
@@ -3551,7 +3551,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-444",
+      "id": "HL500-444",
       "sourceNumber": 328,
       "card": "Psyduck",
       "set": "Fossil",
@@ -3559,7 +3559,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-445",
+      "id": "HL500-445",
       "sourceNumber": 346,
       "card": "Mega Starmie ex - 102/088",
       "set": "ME03: Perfect Order",
@@ -3567,7 +3567,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-446",
+      "id": "HL500-446",
       "sourceNumber": 380,
       "card": "Jigglypuff",
       "set": "Jungle",
@@ -3575,7 +3575,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-447",
+      "id": "HL500-447",
       "sourceNumber": 300,
       "card": "Rayquaza - SWSH029",
       "set": "SWSH: Sword & Shield Promo Cards",
@@ -3583,7 +3583,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-448",
+      "id": "HL500-448",
       "sourceNumber": 404,
       "card": "Secret Box",
       "set": "SV06: Twilight Masquerade",
@@ -3591,7 +3591,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-449",
+      "id": "HL500-449",
       "sourceNumber": 205,
       "card": "Magneton - 159",
       "set": "SV: Scarlet & Violet Promo Cards",
@@ -3599,7 +3599,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-450",
+      "id": "HL500-450",
       "sourceNumber": 432,
       "card": "Mega Zygarde ex - 104/088",
       "set": "ME03: Perfect Order",
@@ -3607,7 +3607,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-451",
+      "id": "HL500-451",
       "sourceNumber": 391,
       "card": "Mew ex - 151/165",
       "set": "SV: Scarlet & Violet 151",
@@ -3615,7 +3615,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-452",
+      "id": "HL500-452",
       "sourceNumber": 280,
       "card": "Surfing Beach",
       "set": "ME04: Chaos Rising",
@@ -3623,7 +3623,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-453",
+      "id": "HL500-453",
       "sourceNumber": 113,
       "card": "Mega Gardevoir ex - 032",
       "set": "ME: Mega Evolution Promo",
@@ -3631,7 +3631,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-454",
+      "id": "HL500-454",
       "sourceNumber": 359,
       "card": "Boss's Orders [Corbeau] - 256/217",
       "set": "ME: Ascended Heroes",
@@ -3639,7 +3639,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-455",
+      "id": "HL500-455",
       "sourceNumber": 483,
       "card": "Mew V",
       "set": "SWSH08: Fusion Strike",
@@ -3647,7 +3647,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-456",
+      "id": "HL500-456",
       "sourceNumber": 299,
       "card": "Mega Charizard Y ex - 022/217",
       "set": "ME: Ascended Heroes",
@@ -3655,7 +3655,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-457",
+      "id": "HL500-457",
       "sourceNumber": 61,
       "card": "Pikachu - 58/102 (Celebrations Metal Card)",
       "set": "Miscellaneous Cards & Products",
@@ -3663,7 +3663,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-458",
+      "id": "HL500-458",
       "sourceNumber": 383,
       "card": "Ultra Ball - 264/217",
       "set": "ME: Ascended Heroes",
@@ -3671,7 +3671,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-459",
+      "id": "HL500-459",
       "sourceNumber": 264,
       "card": "Special Red Card - 113/086",
       "set": "ME04: Chaos Rising",
@@ -3679,7 +3679,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-460",
+      "id": "HL500-460",
       "sourceNumber": 253,
       "card": "Turtwig - 040",
       "set": "ME: Mega Evolution Promo",
@@ -3687,7 +3687,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-461",
+      "id": "HL500-461",
       "sourceNumber": 243,
       "card": "Chimchar - 041",
       "set": "ME: Mega Evolution Promo",
@@ -3695,7 +3695,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-462",
+      "id": "HL500-462",
       "sourceNumber": 150,
       "card": "Chespin - 087/086",
       "set": "ME04: Chaos Rising",
@@ -3703,7 +3703,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-463",
+      "id": "HL500-463",
       "sourceNumber": 259,
       "card": "Greninja ex - 106/167",
       "set": "SV06: Twilight Masquerade",
@@ -3711,7 +3711,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-464",
+      "id": "HL500-464",
       "sourceNumber": 261,
       "card": "Litten - 044",
       "set": "ME: Mega Evolution Promo",
@@ -3719,7 +3719,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-465",
+      "id": "HL500-465",
       "sourceNumber": 488,
       "card": "Umbreon ex - 060/131",
       "set": "SV: Prismatic Evolutions",
@@ -3727,7 +3727,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-466",
+      "id": "HL500-466",
       "sourceNumber": 302,
       "card": "Beedrill ex - 098/086",
       "set": "ME04: Chaos Rising",
@@ -3735,7 +3735,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-467",
+      "id": "HL500-467",
       "sourceNumber": 286,
       "card": "Wigglytuff - 105/094",
       "set": "ME02: Phantasmal Flames",
@@ -3743,7 +3743,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-468",
+      "id": "HL500-468",
       "sourceNumber": 476,
       "card": "Forest of Vitality",
       "set": "ME03: Perfect Order",
@@ -3751,7 +3751,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-469",
+      "id": "HL500-469",
       "sourceNumber": 210,
       "card": "Espurr - 095/088",
       "set": "ME03: Perfect Order",
@@ -3759,7 +3759,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-470",
+      "id": "HL500-470",
       "sourceNumber": 211,
       "card": "Rowlet - 090/088",
       "set": "ME03: Perfect Order",
@@ -3767,7 +3767,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-471",
+      "id": "HL500-471",
       "sourceNumber": 270,
       "card": "Rowlet - 043",
       "set": "ME: Mega Evolution Promo",
@@ -3775,7 +3775,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-472",
+      "id": "HL500-472",
       "sourceNumber": 497,
       "card": "Dawn - 118/094",
       "set": "ME02: Phantasmal Flames",
@@ -3783,7 +3783,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-473",
+      "id": "HL500-473",
       "sourceNumber": 367,
       "card": "Mega Charizard Y ex - 030",
       "set": "ME: Mega Evolution Promo",
@@ -3791,7 +3791,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-474",
+      "id": "HL500-474",
       "sourceNumber": 318,
       "card": "Mega Charizard X ex - 029",
       "set": "ME: Mega Evolution Promo",
@@ -3799,7 +3799,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-475",
+      "id": "HL500-475",
       "sourceNumber": 200,
       "card": "Tauros - 096/086",
       "set": "ME04: Chaos Rising",
@@ -3807,7 +3807,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-476",
+      "id": "HL500-476",
       "sourceNumber": 313,
       "card": "Popplio - 045",
       "set": "ME: Mega Evolution Promo",
@@ -3815,7 +3815,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-477",
+      "id": "HL500-477",
       "sourceNumber": 260,
       "card": "Dedenne - 093/088",
       "set": "ME03: Perfect Order",
@@ -3823,7 +3823,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-478",
+      "id": "HL500-478",
       "sourceNumber": 178,
       "card": "Pikachu (Pokemon Day 2026)",
       "set": "Miscellaneous Cards & Products",
@@ -3831,7 +3831,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-479",
+      "id": "HL500-479",
       "sourceNumber": 428,
       "card": "Mega Froslass ex - 047/217",
       "set": "ME: Ascended Heroes",
@@ -3839,7 +3839,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-480",
+      "id": "HL500-480",
       "sourceNumber": 384,
       "card": "Fennekin - 080",
       "set": "ME: Mega Evolution Promo",
@@ -3847,7 +3847,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-481",
+      "id": "HL500-481",
       "sourceNumber": 392,
       "card": "Dewgong - 097/094",
       "set": "ME02: Phantasmal Flames",
@@ -3855,7 +3855,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-482",
+      "id": "HL500-482",
       "sourceNumber": 490,
       "card": "Surfing Pikachu V",
       "set": "Celebrations",
@@ -3863,7 +3863,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-483",
+      "id": "HL500-483",
       "sourceNumber": 320,
       "card": "Crobat - 093/086",
       "set": "ME04: Chaos Rising",
@@ -3871,7 +3871,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-484",
+      "id": "HL500-484",
       "sourceNumber": 466,
       "card": "Mega Dragonite ex - 152/217",
       "set": "ME: Ascended Heroes",
@@ -3879,7 +3879,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-485",
+      "id": "HL500-485",
       "sourceNumber": 289,
       "card": "Sliggoo - 095/086",
       "set": "ME04: Chaos Rising",
@@ -3887,7 +3887,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-486",
+      "id": "HL500-486",
       "sourceNumber": 148,
       "card": "Mega Charizard X ex - 013/094",
       "set": "ME02: Phantasmal Flames",
@@ -3895,7 +3895,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-487",
+      "id": "HL500-487",
       "sourceNumber": 368,
       "card": "Metang - 094/086",
       "set": "ME04: Chaos Rising",
@@ -3903,7 +3903,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-488",
+      "id": "HL500-488",
       "sourceNumber": 499,
       "card": "Zacian - 100/094",
       "set": "ME02: Phantasmal Flames",
@@ -3911,7 +3911,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-489",
+      "id": "HL500-489",
       "sourceNumber": 439,
       "card": "Aurorus - 092/088",
       "set": "ME03: Perfect Order",
@@ -3919,7 +3919,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-490",
+      "id": "HL500-490",
       "sourceNumber": 247,
       "card": "Mew",
       "set": "Celebrations",
@@ -3927,7 +3927,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-491",
+      "id": "HL500-491",
       "sourceNumber": 453,
       "card": "Fezandipiti ex - 142/217",
       "set": "ME: Ascended Heroes",
@@ -3935,7 +3935,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-492",
+      "id": "HL500-492",
       "sourceNumber": 401,
       "card": "Claydol - 092/086",
       "set": "ME04: Chaos Rising",
@@ -3943,7 +3943,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-493",
+      "id": "HL500-493",
       "sourceNumber": 104,
       "card": "Meowth ex - 062/088",
       "set": "ME03: Perfect Order",
@@ -3951,7 +3951,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-494",
+      "id": "HL500-494",
       "sourceNumber": 406,
       "card": "Tyrunt - 070",
       "set": "ME: Mega Evolution Promo",
@@ -3959,7 +3959,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-495",
+      "id": "HL500-495",
       "sourceNumber": 160,
       "card": "Hilda",
       "set": "SV: White Flare",
@@ -3967,7 +3967,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-496",
+      "id": "HL500-496",
       "sourceNumber": 258,
       "card": "Mega Gengar ex",
       "set": "ME02: Phantasmal Flames",
@@ -3975,7 +3975,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-497",
+      "id": "HL500-497",
       "sourceNumber": 273,
       "card": "Dunsparce",
       "set": "SV09: Journey Together",
@@ -3983,7 +3983,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-498",
+      "id": "HL500-498",
       "sourceNumber": 182,
       "card": "Mega Greninja ex - 022/086",
       "set": "ME04: Chaos Rising",
@@ -3991,7 +3991,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-499",
+      "id": "HL500-499",
       "sourceNumber": 463,
       "card": "Beedrill ex - 003/086",
       "set": "ME04: Chaos Rising",
@@ -3999,7 +3999,7 @@
       "tcgplayerId": null
     },
     {
-      "id": "PL500-500",
+      "id": "HL500-500",
       "sourceNumber": 492,
       "card": "Poke Pad - 081/088",
       "set": "ME03: Perfect Order",

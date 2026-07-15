@@ -11,7 +11,7 @@ describe("TCGPlayer Playwright permission gate", function () {
     "ORACLE_TCGPLAYER_SCRAPING_PERMISSION_CONFIRMED",
     "ORACLE_PLAYWRIGHT_ENABLED",
     "ORACLE_PLAYWRIGHT_FALLBACK",
-    "ORACLE_PL500_SOURCE"
+    "ORACLE_HL500_ENABLED"
   ];
 
   before(function () {

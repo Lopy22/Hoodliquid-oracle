@@ -2,7 +2,7 @@
   "version": 1,
   "defaultFloorUsd": 0.01,
   "markets": {
-    "PL500": 10000,
+    "HL500": 10000,
     "CHARIZARD-X": 100,
     "CHARIZARD-151": 50,
     "CHARIZARD-VSTAR-SWSH262": 5,

@@ -25,6 +25,7 @@ for (const relative of files) {
     continue;
   }
   const absolute = path.join(root, relative);
+  if (!fs.existsSync(absolute)) continue;
   if (!fs.statSync(absolute).isFile()) continue;
   const content = fs.readFileSync(absolute, "utf8");
   if (/-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----/.test(content)) {

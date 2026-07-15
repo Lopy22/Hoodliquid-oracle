@@ -4,7 +4,7 @@ const { logger } = require("../logger.cjs");
 const { argument, runWorker } = require("./loop.cjs");
 const { scrapeCycle } = require("../../scripts/scrape-tcgplayer-prices.cjs");
 const { activeRegistryMarkets } = require("../../scripts/oracle-market-registry.cjs");
-const { isPl500MarketLive, pl500MappingStatus } = require("../../scripts/pl500-market.cjs");
+const { isHl500MarketLive, hl500MappingStatus } = require("../../scripts/hl500-market.cjs");
 
 let lastRetentionAt = 0;
 
@@ -49,7 +49,7 @@ async function ingestCycle(
     throw new Error("all " + result.targetCount + " oracle targets failed");
   }
 
-  const pl500Live = isPl500MarketLive(chainId);
+  const hl500Live = isHl500MarketLive(chainId);
   await withTransaction(pool, async (client) => {
     await ensurePartitions(client);
     await enforceRetention(client);
@@ -60,7 +60,7 @@ async function ingestCycle(
     );
 
     for (const [marketId, quote] of Object.entries(result.payload.prices)) {
-      if (marketId === "PL500" && !pl500Live) continue;
+      if (marketId === "HL500" && !hl500Live) continue;
       const price = Math.round(Number(quote?.price || 0));
       const rawPrice = Math.round(Number(quote?.rawPrice || quote?.price || 0));
       const observedAtSeconds = Number(quote?.lastUpdateTime || 0);
@@ -149,9 +149,9 @@ async function ingestCycle(
 }
 
 async function syncMarkets(pool, chainId = Number(process.env.CHAIN_ID)) {
-  const pl500Live = isPl500MarketLive(chainId);
+  const hl500Live = isHl500MarketLive(chainId);
   for (const market of activeRegistryMarkets()) {
-    const live = market.priceApiMarket !== "PL500" || pl500Live;
+    const live = market.priceApiMarket !== "HL500" || hl500Live;
     await pool.query(
       "INSERT INTO markets("
       + "market_id,symbol,display_name,market_type,live,price_floor,metadata"
@@ -229,14 +229,13 @@ function stableStringify(value) {
 }
 
 function confidenceBps(source) {
-  if (source === "pokeliquid-api") return 8_500;
-  if (source === "user-top500-list") return 0;
+  if (source === "hoodliquid-hl500-seed") return 0;
+  if (source === "hoodliquid-hl500") return 9_500;
   if (source === "poketrace-ewap") return 9_750;
   if (source === "poketrace-aggregate") return 9_400;
   if (
     source === "tcgplayer-api"
     || source === "tcgplayer-playwright"
-    || source === "tcgplayer-index"
   ) return 9_500;
   return 9_000;
 }
@@ -293,8 +292,8 @@ async function insertSecondaryObservation(client, marketId, quote) {
   );
 }
 
-function isPl500Ready() {
-  return pl500MappingStatus().ready;
+function isHl500Ready() {
+  return hl500MappingStatus().ready;
 }
 
 if (require.main === module) {
@@ -311,7 +310,7 @@ module.exports = {
   hashSource,
   ingestCycle,
   isQuoteAccepted,
-  isPl500Ready,
+  isHl500Ready,
   sourceCount,
   stableStringify,
   syncMarkets

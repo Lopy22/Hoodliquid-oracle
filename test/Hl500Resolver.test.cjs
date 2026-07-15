@@ -5,9 +5,9 @@ const {
   searchTerms,
   stripCardDecorators,
   tokenOverlapScore
-} = require("../scripts/resolve-pl500-tcgplayer-ids.cjs");
+} = require("../scripts/resolve-hl500-tcgplayer-ids.cjs");
 
-describe("PL500 TCGPlayer resolver", function () {
+describe("HL500 TCGPlayer resolver", function () {
   it("builds focused search terms from a constituent row", function () {
     const row = {
       card: "Umbreon ex - 161/131",
