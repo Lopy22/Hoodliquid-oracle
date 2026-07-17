@@ -14,6 +14,8 @@
     "oracle:once": "node server/workers/market-data.cjs --once",
     "oracle:watch": "node server/workers/market-data.cjs",
     "oracle:status": "node scripts/oracle-status.cjs",
+    "oracle:refresh:index": "NODE_ENV=production node scripts/refresh-index-constituents.cjs",
+    "oracle:build:hl300": "node scripts/build-hl300-constituents.cjs",
     "oracle:scrape": "node scripts/scrape-tcgplayer-prices.cjs --once",
     "api": "node server/api.cjs",
     "pm2:start": "pm2 start ops/ecosystem.config.cjs",

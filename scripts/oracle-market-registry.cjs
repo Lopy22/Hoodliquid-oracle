@@ -36,6 +36,11 @@ function validateOracleMarketRegistry(registry, registryPath = DEFAULT_MARKET_RE
     if (!Number.isFinite(floor) || floor <= 0) {
       throw new Error(`Oracle registry market ${market.priceApiMarket} needs a positive priceFloorUsd`);
     }
+    const maxOpenInterestEth = Number(market.maxOpenInterestEth);
+    if (!Number.isFinite(maxOpenInterestEth) || maxOpenInterestEth <= 0) {
+      throw new Error(`Oracle registry market ${market.priceApiMarket} needs a positive maxOpenInterestEth`);
+    }
+
     if (market.type === "CARDS") {
       if (!Number.isInteger(Number(market.tcgplayerId)) || Number(market.tcgplayerId) <= 0) {
         throw new Error(`Card market ${market.priceApiMarket} needs a TCGPlayer product id`);
@@ -53,16 +58,37 @@ function validateOracleMarketRegistry(registry, registryPath = DEFAULT_MARKET_RE
       }
     }
 
-    if (market.type === "INDEX" && market.priceApiMarket === "HL500") {
+    if (market.type === "INDEX") {
       if (!market.oracle || market.oracle.kind !== "fixed-basket-index") {
-        throw new Error("HL500 must declare oracle.kind fixed-basket-index");
+        throw new Error(`${market.priceApiMarket} must declare oracle.kind fixed-basket-index`);
       }
       requireField(market.oracle, "constituentsPath", registryPath);
       requirePositiveInteger(market.oracle, "targetConstituents", registryPath);
+      const targetConstituents = Number(market.oracle.targetConstituents);
+      const apiPricedTargetCount = Number(market.oracle.apiPricedTargetCount);
+      const snapshotExceptionTargetCount = Number(market.oracle.snapshotExceptionTargetCount);
+      if (!Number.isInteger(apiPricedTargetCount) || apiPricedTargetCount < 0) {
+        throw new Error(`${market.priceApiMarket} oracle.apiPricedTargetCount must be a non-negative integer`);
+      }
+      if (!Number.isInteger(snapshotExceptionTargetCount) || snapshotExceptionTargetCount < 0) {
+        throw new Error(`${market.priceApiMarket} oracle.snapshotExceptionTargetCount must be a non-negative integer`);
+      }
+      if (apiPricedTargetCount + snapshotExceptionTargetCount !== targetConstituents) {
+        throw new Error(`${market.priceApiMarket} live mapping and snapshot targets must equal targetConstituents`);
+      }
     }
   }
 
+  const liveIndexMarkets = registry.markets.filter((market) => market.type === "INDEX" && market.live !== false);
+  if (liveIndexMarkets.length > 1) {
+    throw new Error(`Oracle market registry ${registryPath} must define at most one live INDEX market`);
+  }
+
   return true;
+}
+
+function liveIndexMarket(registry = loadOracleMarketRegistry()) {
+  return registry.markets.find((market) => market.type === "INDEX" && market.live !== false) || null;
 }
 
 function activeRegistryMarkets(registry = loadOracleMarketRegistry()) {
@@ -90,6 +116,16 @@ function cardOracleTargets(registry = loadOracleMarketRegistry()) {
     }));
 }
 
+function perpSeedMarkets(registry = loadOracleMarketRegistry()) {
+  return activeRegistryMarkets(registry).map((market) => [
+    market.priceApiMarket,
+    market.symbol,
+    market.priceApiMarket,
+    Number(market.maxLeverage || 25),
+    Number(market.maxOpenInterestEth || 25)
+  ]);
+}
+
 function registryPriceFloors(registry = loadOracleMarketRegistry()) {
   return Object.fromEntries(activeRegistryMarkets(registry).map((market) => [market.priceApiMarket, Number(market.priceFloorUsd)]));
 }
@@ -115,7 +151,9 @@ module.exports = {
   DEFAULT_MARKET_REGISTRY_PATH,
   activeRegistryMarkets,
   cardOracleTargets,
+  liveIndexMarket,
   loadOracleMarketRegistry,
+  perpSeedMarkets,
   registryMarketMap,
   registryPriceFloors,
   validateOracleMarketRegistry

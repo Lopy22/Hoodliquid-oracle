@@ -4,7 +4,6 @@ const { logger } = require("../logger.cjs");
 const { argument, runWorker } = require("./loop.cjs");
 const { scrapeCycle } = require("../../scripts/scrape-tcgplayer-prices.cjs");
 const { activeRegistryMarkets } = require("../../scripts/oracle-market-registry.cjs");
-const { isHl500MarketLive, hl500MappingStatus } = require("../../scripts/hl500-market.cjs");
 
 let lastRetentionAt = 0;
 
@@ -18,30 +17,33 @@ async function main() {
       network,
       name: "market-data",
       intervalMs: Number(process.env.ORACLE_SCRAPE_INTERVAL_MS || 60_000),
-      run: () => ingestCycle(pool, network.chainId)
+      run: () => ingestCycle(pool)
     });
   } finally {
     await pool.end();
   }
 }
 
-async function ingestCycle(
-  pool,
-  chainId = Number(process.env.CHAIN_ID),
-  scrape = scrapeCycle
-) {
-  const [marks, sourceState] = await Promise.all([
+async function ingestCycle(pool, chainIdOrScrape, scrapeOverride) {
+  // Keep the public worker helper compatible with callers that previously
+  // supplied (pool, chainId, scrape). Chain selection is now registry-driven.
+  const scrape = typeof chainIdOrScrape === "function"
+    ? chainIdOrScrape
+    : scrapeOverride || scrapeCycle;
+  const [marks, sourceState, constituentObservations] = await Promise.all([
     pool.query("SELECT market_id,metadata FROM oracle_marks"),
-    pool.query("SELECT state FROM source_state WHERE source='poketrace'")
+    pool.query("SELECT state FROM source_state WHERE source='poketrace'"),
+    pool.query(
+      `SELECT DISTINCT ON (market_id) market_id,metadata
+       FROM source_observations
+       WHERE accepted=true AND market_id LIKE 'HL500-%'
+       ORDER BY market_id,observed_at DESC`
+    )
   ]);
-  const previousPrices = Object.fromEntries(
-    marks.rows
-      .map((row) => [row.market_id, row.metadata?.quote])
-      .filter((entry) => Boolean(entry[1]))
-  );
+  const previousPrices = previousPriceMap(marks.rows, constituentObservations.rows);
   const result = await scrape({
     persist: false,
-    quiet: true,
+    quiet: process.env.ORACLE_VERBOSE !== "true",
     previousPayload: { prices: previousPrices },
     previousPoketrace: sourceState.rows[0]?.state
   });
@@ -49,7 +51,7 @@ async function ingestCycle(
     throw new Error("all " + result.targetCount + " oracle targets failed");
   }
 
-  const hl500Live = isHl500MarketLive(chainId);
+  const protocolMarketIds = new Set(activeRegistryMarkets().map((market) => market.priceApiMarket));
   await withTransaction(pool, async (client) => {
     await ensurePartitions(client);
     await enforceRetention(client);
@@ -60,7 +62,6 @@ async function ingestCycle(
     );
 
     for (const [marketId, quote] of Object.entries(result.payload.prices)) {
-      if (marketId === "HL500" && !hl500Live) continue;
       const price = Math.round(Number(quote?.price || 0));
       const rawPrice = Math.round(Number(quote?.rawPrice || quote?.price || 0));
       const observedAtSeconds = Number(quote?.lastUpdateTime || 0);
@@ -103,7 +104,7 @@ async function ingestCycle(
         ]
       );
       await insertSecondaryObservation(client, marketId, quote);
-      if (!accepted) continue;
+      if (!accepted || !protocolMarketIds.has(marketId)) continue;
 
       await client.query(
         "INSERT INTO oracle_marks("
@@ -148,10 +149,19 @@ async function ingestCycle(
   };
 }
 
-async function syncMarkets(pool, chainId = Number(process.env.CHAIN_ID)) {
-  const hl500Live = isHl500MarketLive(chainId);
+function previousPriceMap(markRows, constituentRows) {
+  const prices = {};
+  for (const row of constituentRows || []) {
+    if (row?.market_id && row.metadata) prices[row.market_id] = row.metadata;
+  }
+  for (const row of markRows || []) {
+    if (row?.market_id && row.metadata?.quote) prices[row.market_id] = row.metadata.quote;
+  }
+  return prices;
+}
+
+async function syncMarkets(pool) {
   for (const market of activeRegistryMarkets()) {
-    const live = market.priceApiMarket !== "HL500" || hl500Live;
     await pool.query(
       "INSERT INTO markets("
       + "market_id,symbol,display_name,market_type,live,price_floor,metadata"
@@ -165,7 +175,7 @@ async function syncMarkets(pool, chainId = Number(process.env.CHAIN_ID)) {
         market.symbol,
         market.displayName || market.name || market.priceApiMarket,
         market.type,
-        Boolean(market.live !== false && live),
+        Boolean(market.live !== false),
         String(Math.round(Number(market.priceFloorUsd) * 1_000_000)),
         market
       ]
@@ -229,8 +239,8 @@ function stableStringify(value) {
 }
 
 function confidenceBps(source) {
-  if (source === "hoodliquid-hl500-seed") return 0;
-  if (source === "hoodliquid-hl500") return 9_500;
+  if (/^hoodliquid-hl\d+-seed$/.test(source)) return 0;
+  if (/^hoodliquid-hl\d+$/.test(source)) return 9_500;
   if (source === "poketrace-ewap") return 9_750;
   if (source === "poketrace-aggregate") return 9_400;
   if (
@@ -292,10 +302,6 @@ async function insertSecondaryObservation(client, marketId, quote) {
   );
 }
 
-function isHl500Ready() {
-  return hl500MappingStatus().ready;
-}
-
 if (require.main === module) {
   main().catch((error) => {
     logger.fatal({ err: error }, "Market-data worker failed");
@@ -310,7 +316,7 @@ module.exports = {
   hashSource,
   ingestCycle,
   isQuoteAccepted,
-  isHl500Ready,
+  previousPriceMap,
   sourceCount,
   stableStringify,
   syncMarkets

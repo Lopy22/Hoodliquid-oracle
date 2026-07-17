@@ -6,9 +6,10 @@ const {
 } = require("../scripts/oracle-market-registry.cjs");
 
 describe("Oracle market registry", function () {
-  it("defines HL500 plus the six supported Charizard markets", function () {
+  it("defines live HL300, retired HL500, and the six supported Charizard markets", function () {
     const registry = loadOracleMarketRegistry();
     expect(registry.markets.map((market) => market.priceApiMarket)).to.deep.equal([
+      "HL300",
       "HL500",
       "CHARIZARD-X",
       "CHARIZARD-151",
@@ -34,7 +35,7 @@ describe("Oracle market registry", function () {
 
   it("provides all price floors from the same registry", function () {
     const floors = registryPriceFloors();
-    expect(floors.HL500).to.equal(10000);
+    expect(floors.HL300).to.equal(10000);
     expect(floors["CHARIZARD-X"]).to.equal(100);
     expect(Object.keys(floors)).to.have.length(7);
   });

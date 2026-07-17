@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const { EWMA_TIERS, PRICE_SCALE, smoothQuote } = require("./oracle-smoothing.cjs");
-const { cardOracleTargets, registryPriceFloors } = require("./oracle-market-registry.cjs");
+const { cardOracleTargets, liveIndexMarket, registryPriceFloors } = require("./oracle-market-registry.cjs");
 const { createPoketraceClient } = require("./poketrace-oracle.cjs");
 require("dotenv").config({ path: ".env.local", quiet: true });
 if (process.env.NODE_ENV === "production") require("dotenv").config({ path: ".env.production", quiet: true });
@@ -13,7 +13,6 @@ const DEFAULT_TCGPLAYER_SOURCE = "playwright";
 const DEFAULT_PRIMARY_SOURCE = "tcgplayer";
 const DEFAULT_CACHE_PATH = "data/oracle/prices.json";
 const DEFAULT_SKU_CACHE_PATH = "data/oracle/tcgplayer-skus.json";
-const DEFAULT_HL500_PATH = "data/oracle/hl500-constituents.json";
 const DEFAULT_PRICE_FLOOR_PATH = "data/oracle/price-floors.json";
 const DEFAULT_POKETRACE_CACHE_PATH = "data/oracle/poketrace-prices.json";
 const DEFAULT_POKETRACE_POLL_INTERVAL_MS = 15 * 60 * 1000;
@@ -25,6 +24,30 @@ const DEFAULT_TCGPLAYER_CONDITION_LABEL = "Near Mint";
 async function main() {
   const result = await scrapeCycle();
   if (result.successfulMarkets === 0 && result.targetCount > 0) process.exitCode = 1;
+}
+function requiresPlaywrightPermission() {
+  return tcgplayerSourceMode() === "playwright" || allowPlaywrightScraping();
+}
+
+function assertPlaywrightPermission() {
+  if (
+    requiresPlaywrightPermission()
+    && process.env.ORACLE_TCGPLAYER_SCRAPING_PERMISSION_CONFIRMED !== "true"
+  ) {
+    throw new Error(
+      "TCGPlayer Playwright collection requires express permission from TCGPlayer. "
+      + "After obtaining permission, set ORACLE_TCGPLAYER_SCRAPING_PERMISSION_CONFIRMED=true. "
+      + "This confirmation is an operator acknowledgement and does not grant permission."
+    );
+  }
+  return true;
+}
+
+function validateSourceConfiguration() {
+  tcgplayerSourceMode();
+  oraclePrimarySource();
+  if (requiresPlaywrightPermission()) assertPlaywrightPermission();
+  return true;
 }
 
 async function scrapeCycle(options = {}) {
@@ -139,18 +162,23 @@ async function scrapeCycle(options = {}) {
     if (browserState.browser) await browserState.browser.close();
   }
 
-  const previousHl500Quote = previous?.prices?.HL500;
-  const hl500Quote = buildHl500IndexQuote({
-    prices,
-    previousQuote: previousHl500Quote,
-    priceFloors,
-    now
-  });
-  if (hl500Quote.source === "hoodliquid-hl500") {
-    observedSources.add(hl500Quote.source);
-    successfulMarkets += 1;
+  const index = loadIndexDefinition();
+  if (index) {
+    const indexPriceKey = index.indexMarket.priceApiMarket;
+    const previousIndexQuote = previous?.prices?.[indexPriceKey];
+    const indexQuote = buildIndexQuote({
+      index,
+      prices,
+      previousQuote: previousIndexQuote,
+      priceFloors,
+      now
+    });
+    if (isHoodliquidIndexSource(indexQuote.source)) {
+      observedSources.add(indexQuote.source);
+      successfulMarkets += 1;
+    }
+    prices[indexPriceKey] = withRefreshChange(indexQuote, previousIndexQuote, now);
   }
-  prices.HL500 = withRefreshChange(hl500Quote, previousHl500Quote, now);
 
   let poketracePayload = previousPoketrace;
   if (shouldPollPoketrace) {
@@ -185,7 +213,7 @@ async function scrapeCycle(options = {}) {
     acquisition: {
       primary: oraclePrimarySource(),
       tcgplayerMode: tcgplayerSourceMode(),
-      hl500Method: "hoodliquid-constituents",
+      indexMethod: "hoodliquid-constituents",
       concurrency: scrapeConcurrency,
       playwrightEnabled: allowPlaywrightScraping()
     },
@@ -307,7 +335,6 @@ async function fetchTcgplayerApiQuote(market, apiClient) {
 }
 
 async function ensureBrowserContext(browserState) {
-  assertPlaywrightPermission();
   if (browserState.context) return browserState.context;
   if (!browserState.contextPromise) {
     browserState.contextPromise = (async () => {
@@ -354,31 +381,6 @@ function allowPlaywrightScraping() {
   }
   if (tcgplayerSourceMode() === "playwright") return true;
   return process.env.ORACLE_PLAYWRIGHT_FALLBACK === "true";
-}
-
-function requiresPlaywrightPermission() {
-  return tcgplayerSourceMode() === "playwright" || allowPlaywrightScraping();
-}
-
-function assertPlaywrightPermission() {
-  if (
-    requiresPlaywrightPermission()
-    && process.env.ORACLE_TCGPLAYER_SCRAPING_PERMISSION_CONFIRMED !== "true"
-  ) {
-    throw new Error(
-      "TCGPlayer Playwright collection requires express permission from TCGPlayer. "
-      + "After obtaining permission, set ORACLE_TCGPLAYER_SCRAPING_PERMISSION_CONFIRMED=true. "
-      + "This confirmation is an operator acknowledgement and does not grant permission."
-    );
-  }
-  return true;
-}
-
-function validateSourceConfiguration() {
-  tcgplayerSourceMode();
-  oraclePrimarySource();
-  if (requiresPlaywrightPermission()) assertPlaywrightPermission();
-  return true;
 }
 
 function tcgplayerSourceMode() {
@@ -635,8 +637,8 @@ function selectTargets() {
     .filter(Boolean);
   const includeAll = requested.length === 0 || requested.includes("ALL");
   const limit = Number(process.env.ORACLE_SCRAPE_LIMIT || 0);
-  const hl500List = loadHl500List();
-  const hl500Targets = hl500List.constituents
+  const index = loadIndexDefinition();
+  const indexTargets = (index?.list.constituents || [])
     .filter((constituent) => constituent.tcgplayerId || constituent.snapshotOnly)
     .map((constituent) => ({
       priceKey: constituent.id,
@@ -650,7 +652,7 @@ function selectTargets() {
       languageId: Number(constituent.languageId || getPreferredLanguageId()),
       tcgplayerUrl: constituent.tcgplayerUrl || (constituent.tcgplayerId ? `https://www.tcgplayer.com/product/${constituent.tcgplayerId}?page=1&Language=English` : undefined)
     }));
-  const selected = hl500Targets.filter(
+  const selected = indexTargets.filter(
     (market) => includeAll || requested.includes(market.priceKey.toUpperCase()) || requested.includes(String(market.tcgplayerId))
   );
   const registryTargets = cardOracleTargets();
@@ -666,14 +668,21 @@ function selectTargets() {
   return limit > 0 ? targets.slice(0, limit) : targets;
 }
 
-function loadHl500List() {
-  const configured = process.env.ORACLE_HL500_CONSTITUENTS || DEFAULT_HL500_PATH;
+function loadIndexDefinition() {
+  const indexMarket = liveIndexMarket();
+  if (!indexMarket) return null;
+  const configured = process.env.ORACLE_INDEX_CONSTITUENTS || indexMarket.oracle.constituentsPath;
   const filePath = path.isAbsolute(configured) ? configured : path.join(process.cwd(), configured);
-  return JSON.parse(fs.readFileSync(filePath, "utf8"));
+  return { indexMarket, list: JSON.parse(fs.readFileSync(filePath, "utf8")) };
+}
+
+function isHoodliquidIndexSource(source) {
+  return /^hoodliquid-hl\d+$/.test(String(source || ""));
 }
 
 function chooseCacheSource(observedSources, hasApiClient) {
-  if (observedSources.has("hoodliquid-hl500")) return "hoodliquid-hl500";
+  const indexSource = [...observedSources].find((source) => isHoodliquidIndexSource(source));
+  if (indexSource) return indexSource;
   if (observedSources.has("poketrace-ewap")) return "poketrace-ewap";
   if (observedSources.has("poketrace-aggregate")) return "poketrace-aggregate";
   if (observedSources.has("tcgplayer-api")) return "tcgplayer-api";
@@ -719,6 +728,16 @@ function resolvePoketraceCachePath() {
 
 function resolvePriceFloorPath() {
   const configured = process.env.ORACLE_PRICE_FLOORS || DEFAULT_PRICE_FLOOR_PATH;
+  return path.isAbsolute(configured) ? configured : path.join(process.cwd(), configured);
+}
+
+function resolveStatusPath() {
+  const configured = process.env.ORACLE_STATUS_CACHE || DEFAULT_STATUS_PATH;
+  return path.isAbsolute(configured) ? configured : path.join(process.cwd(), configured);
+}
+
+function resolveLockPath() {
+  const configured = process.env.ORACLE_WATCHER_LOCK || DEFAULT_LOCK_PATH;
   return path.isAbsolute(configured) ? configured : path.join(process.cwd(), configured);
 }
 
@@ -772,71 +791,100 @@ function withRefreshChange(quote, previousQuote, refreshedAt) {
   };
 }
 
-function buildHl500IndexQuote({ prices, previousQuote, priceFloors, now }) {
-  const hl500 = loadHl500List();
-  const rows = hl500.constituents.map((constituent) => {
+function indexToleranceConfig() {
+  return {
+    freshnessSeconds: positiveInteger(process.env.ORACLE_INDEX_FRESHNESS_SECONDS, 1_800)
+  };
+}
+
+function positiveInteger(value, fallback) {
+  const parsed = Number(value);
+  return Number.isInteger(parsed) && parsed > 0 ? parsed : fallback;
+}
+
+function buildIndexQuote({ index, prices, previousQuote, priceFloors, now }) {
+  const { indexMarket, list } = index;
+  const liveSource = `hoodliquid-${indexMarket.priceApiMarket.toLowerCase()}`;
+  const seedSource = `${liveSource}-seed`;
+  const { freshnessSeconds } = indexToleranceConfig();
+  const total = list.constituents.length;
+  const rows = list.constituents.map((constituent) => {
     const quote = prices[constituent.id];
     const rawPrice = Number(quote?.rawPrice || quote?.price || Math.round(constituent.seedPriceUsd * PRICE_SCALE));
-    const live = Boolean(
+    // A constituent that has ever had a real market observation keeps that price
+    // (carry-forward) even after it goes stale; one that has never been priced
+    // (cold start or pruned) only has its display-only seed value.
+    const priced = Boolean(
       quote && (isPoketraceSource(quote.source) || quote.source === "tcgplayer-api" || quote.source === "tcgplayer-playwright" || quote.source === "snapshot")
     );
-    return { quote, rawPrice, live };
+    const observedAt = Number(quote?.lastUpdateTime || 0);
+    const fresh = priced && observedAt > 0 && now - observedAt <= freshnessSeconds;
+    return { id: constituent.id, quote, rawPrice, priced, fresh, observedAt };
   });
+
   const rawPrice = rows.reduce((sum, row) => sum + row.rawPrice, 0);
-  const liveConstituentCount = rows.filter((row) => row.live).length;
-  const complete = liveConstituentCount === hl500.constituents.length;
+  const freshRows = rows.filter((row) => row.fresh);
+  const carriedRows = rows.filter((row) => row.priced && !row.fresh);
+  const unpricedRows = rows.filter((row) => !row.priced);
+  const liveConstituentCount = freshRows.length;
+  const staleCount = carriedRows.length;
+  const staleIds = carriedRows.map((row) => row.id);
+  const unpricedCount = unpricedRows.length;
+  const oldestStaleAgeSeconds = carriedRows.reduce((oldest, row) => Math.max(oldest, row.observedAt > 0 ? now - row.observedAt : 0), 0);
+  // Never disabled by staleness: the index stays tradable on carried prices no
+  // matter how many constituents are stale, as long as every one has at least a
+  // real prior observation to carry. Only a never-priced constituent is indicative.
+  const tradable = total > 0 && unpricedCount === 0;
 
-  if (!complete) {
+  const staleMetadata = {
+    staleCount,
+    staleIds,
+    unpricedCount,
+    oldestStaleAgeSeconds,
+    freshnessSeconds
+  };
+
+  if (!tradable) {
     return {
       price: rawPrice,
       rawPrice,
       ewma: rawPrice / PRICE_SCALE,
       lastUpdateTime: now,
       sourceObservedAt: now,
-      source: "hoodliquid-hl500-seed",
+      source: seedSource,
       indicative: true,
       tradable: false,
       method: "seed-and-resolved-constituent-sum",
-      constituentCount: hl500.constituents.length,
+      constituentCount: total,
       liveConstituentCount,
-      seedTotalUsd: hl500.seedTotalUsd
+      seedTotalUsd: list.seedTotalUsd,
+      ...staleMetadata,
+      staleReason: total === 0 ? "no constituents" : `${unpricedCount} constituents never priced`
     };
   }
 
-  const observedTimestamps = rows.map((row) => Number(row.quote.lastUpdateTime || 0)).filter((timestamp) => timestamp > 0);
-  const observedAt = observedTimestamps.length === rows.length ? Math.min(...observedTimestamps) : 0;
-  if (observedAt <= 0) {
-    return {
-      price: rawPrice,
-      rawPrice,
-      ewma: rawPrice / PRICE_SCALE,
-      lastUpdateTime: now,
-      sourceObservedAt: now,
-      source: "hoodliquid-hl500-seed",
-      indicative: true,
-      tradable: false,
-      method: "seed-and-resolved-constituent-sum",
-      constituentCount: hl500.constituents.length,
-      liveConstituentCount,
-      seedTotalUsd: hl500.seedTotalUsd
-    };
-  }
+  // Freshness reflects the fresh set when any constituent is fresh; when the whole
+  // basket is running on carried prices, stamp the current cycle time so the index
+  // stays openable rather than freezing.
+  const observedAt = freshRows.length > 0 ? Math.min(...freshRows.map((row) => row.observedAt)) : now;
   const isRepeatedObservation =
-    previousQuote?.source === "hoodliquid-hl500" && Number(previousQuote.sourceObservedAt || 0) === observedAt;
-  if (isRepeatedObservation) return previousQuote;
+    previousQuote?.source === liveSource && Number(previousQuote.sourceObservedAt || 0) === observedAt;
+  if (isRepeatedObservation) return { ...previousQuote, ...staleMetadata };
 
   return {
-    ...smoothQuote(rawPrice, previousQuote, observedAt, "hoodliquid-hl500", {
-      priceFloor: getPriceFloor("HL500", priceFloors),
+    ...smoothQuote(rawPrice, previousQuote, observedAt, liveSource, {
+      priceFloor: getPriceFloor(indexMarket.priceApiMarket, priceFloors),
       metadata: {
         sourceObservedAt: observedAt,
-        constituentCount: hl500.constituents.length,
+        constituentCount: total,
         liveConstituentCount,
-        method: "raw-constituent-sum-then-ewma"
+        method: "raw-constituent-sum-then-ewma",
+        ...staleMetadata
       }
     }),
-    constituentCount: hl500.constituents.length,
-    liveConstituentCount
+    constituentCount: total,
+    liveConstituentCount,
+    ...staleMetadata
   };
 }
 
@@ -857,7 +905,7 @@ function isPoketraceSource(source) {
 }
 
 function isTcgplayerSource(source) {
-  return source === "tcgplayer-playwright" || source === "tcgplayer-api" || source === "hoodliquid-hl500";
+  return source === "tcgplayer-playwright" || source === "tcgplayer-api" || isHoodliquidIndexSource(source);
 }
 
 function appendHistory(payload, cycleTimestamp) {
@@ -933,7 +981,7 @@ module.exports = {
   allowPlaywrightFallback,
   allowPlaywrightScraping,
   assertPlaywrightPermission,
-  buildHl500IndexQuote,
+  buildIndexQuote,
   crossSourceStatus,
   extractMarketPrice,
   isKeeperActionDue,

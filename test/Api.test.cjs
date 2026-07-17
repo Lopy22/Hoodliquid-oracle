@@ -49,12 +49,12 @@ describe("Read-only price API", function () {
   it("marks old observations stale and non-tradable", async function () {
     const app = createApp({
       pool: pricePool([{
-        market_id: "HL500",
+        market_id: "HL300",
         live: true,
         price: "10000000000",
         confidence_bps: 9500,
         observed_at: new Date(now - 1_900_000),
-        source: "hoodliquid-hl500",
+        source: "hoodliquid-hl300",
         source_hash: "0x" + "2".repeat(64),
         source_count: 1,
         metadata: { quote: { rawPrice: 10000000000 } }
@@ -63,7 +63,7 @@ describe("Read-only price API", function () {
       now: () => now
     });
     const response = await request(app).get("/api/v1/46630/prices").expect(200);
-    expect(response.body.prices.HL500).to.include({ stale: true, tradable: false });
+    expect(response.body.prices.HL300).to.include({ stale: true, tradable: false });
   });
 
   it("always exposes liveness", async function () {

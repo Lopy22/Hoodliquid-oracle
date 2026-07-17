@@ -2,6 +2,7 @@
   "version": 1,
   "defaultFloorUsd": 0.01,
   "markets": {
+    "HL300": 10000,
     "HL500": 10000,
     "CHARIZARD-X": 100,
     "CHARIZARD-151": 50,

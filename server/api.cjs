@@ -120,8 +120,19 @@ function publicSourceMetadata(quote) {
     secondaryObservedAt: quote.secondaryObservedAt || null,
     crossSource: quote.crossSource || null,
     method: quote.method || null,
-    priceFloor: quote.priceFloor ? integerString(quote.priceFloor) : null
+    priceFloor: quote.priceFloor ? integerString(quote.priceFloor) : null,
+    constituentCount: numberOrNull(quote.constituentCount),
+    freshConstituentCount: numberOrNull(quote.liveConstituentCount),
+    carriedConstituentCount: numberOrNull(quote.staleCount),
+    neverPricedConstituentCount: numberOrNull(quote.unpricedCount),
+    oldestCarryAgeSeconds: numberOrNull(quote.oldestStaleAgeSeconds),
+    constituentFreshnessSeconds: numberOrNull(quote.freshnessSeconds)
   };
+}
+
+function numberOrNull(value) {
+  const number = Number(value);
+  return Number.isFinite(number) ? number : null;
 }
 
 async function main() {
@@ -152,4 +163,4 @@ if (require.main === module) {
   });
 }
 
-module.exports = { createApp, integerString, publicSourceMetadata };
+module.exports = { createApp, integerString, numberOrNull, publicSourceMetadata };

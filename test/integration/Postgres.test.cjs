@@ -17,7 +17,6 @@ describePostgres("PostgreSQL oracle integration", function () {
     process.env.DATABASE_URL = url;
     process.env.CHAIN_ID = "46630";
     process.env.ORACLE_TCGPLAYER_SOURCE = "api";
-    process.env.ORACLE_HL500_ENABLED = "false";
     database = new URL(url).pathname.slice(1);
     if (!/test/i.test(database)) {
       throw new Error("Refusing to reset a database whose name does not contain 'test'");

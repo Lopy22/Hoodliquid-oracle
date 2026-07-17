@@ -1,7 +1,7 @@
 # HoodLiquid Oracle
 
-HoodLiquid Oracle is a standalone, reproducible pricing node for the seven
-markets used by HoodLiquid. It collects upstream card observations, validates
+HoodLiquid Oracle is a standalone, reproducible pricing node for HoodLiquid's
+seven live markets. It collects upstream card observations, validates
 and smooths them, stores accepted marks in PostgreSQL, and exposes the marks
 through a small read-only API.
 
@@ -17,7 +17,7 @@ TCGPlayer Near Mint English -----+
                                  |
 PokeTrace optional corroboration +--> freshness / floors / quorum
                                  |             |
-HoodLiquid 500-card basket ------+             v
+HoodLiquid 300-card basket ------+             v
                                          adaptive EWMA
                                                |
                                                v
@@ -41,16 +41,16 @@ and submit transactions. Those components are intentionally excluded.
 
 One running instance is bound to one chain ID and one database:
 
-| Network | Chain ID | HL500 behavior |
+| Network | Chain ID | Index behavior |
 | --- | ---: | --- |
-| Robinhood Chain | 4663 | Disabled until all 500 mappings and exactly 8 approved snapshots are complete |
-| Robinhood Chain Testnet | 46630 | Uses the same HoodLiquid constituent-completeness gate |
+| Robinhood Chain | 4663 | Publishes the reviewed HL300 basket when fully observed |
+| Robinhood Chain Testnet | 46630 | Uses the same HL300 methodology and basket |
 
 The committed registry contains these seven presets:
 
 | Market | Type | Floor (USD) | Default card source |
 | --- | --- | ---: | --- |
-| HL500 | Index | 10,000 | HoodLiquid's reviewed 500-card constituent basket |
+| HL300 | Index | 10,000 | HoodLiquid's reviewed 300-card constituent basket |
 | CHARIZARD-X | Card | 100 | TCGPlayer Near Mint English |
 | CHARIZARD-151 | Card | 50 | TCGPlayer Near Mint English |
 | CHARIZARD-VSTAR-SWSH262 | Card | 5 | TCGPlayer Near Mint English |
@@ -58,10 +58,11 @@ The committed registry contains these seven presets:
 | MEGA-CHARIZARD-X-023 | Card | 5 | TCGPlayer Near Mint English |
 | CHARIZARD-BS | Card | 50 | TCGPlayer Near Mint English |
 
-The public HL500 file contains all 500 rows and the current seed list, but it
-currently contains 0 TCGPlayer mappings and 0 approved snapshot exceptions.
-Its seed sum is indicative only and is never accepted as a tradable mark.
-HL500 therefore remains unavailable on both networks as committed.
+HL300 is derived reproducibly from the reviewed 500-row source basket. It
+contains the first 300 valid, non-duplicate constituent rows after approved
+basket exclusion HL500-011, all with distinct reviewed TCGPlayer product
+mappings. The historical HL500 entry remains in the registry with live=false;
+it is not collected or published.
 
 ## Compliance requirement for TCGPlayer
 
@@ -256,11 +257,9 @@ worker is accidentally started.
 
 Use separate databases, environment files, API ports, and PM2 process sets.
 Do not point both chain IDs at the same database. A testnet instance uses
-`CHAIN_ID=46630`. A mainnet instance uses `CHAIN_ID=4663`; HL500 will stay
-unavailable until the committed mapping gate is complete. The other six
-registry markets can operate independently of that gate. Create a separate
-mainnet database (and preferably a separate production login role) using the
-SQL procedure above.
+`CHAIN_ID=46630`. A mainnet instance uses `CHAIN_ID=4663`. Both use the
+same reviewed HL300 basket; create a separate mainnet database (and preferably
+a separate production login role) using the SQL procedure above.
 
 The PM2 file derives unique process names from CHAIN_ID. To launch two copies
 from one checkout, provide each environment file explicitly:
@@ -336,6 +335,12 @@ Example price response:
 The integer strings are authoritative fixed-precision values. The USD numbers
 are display-only conversions.
 
+For HL300, sourceMetadata also reports constituentCount,
+freshConstituentCount, carriedConstituentCount,
+neverPricedConstituentCount, oldestCarryAgeSeconds, and
+constituentFreshnessSeconds. A high carried count is an operator signal; it
+does not by itself make an otherwise fully observed HL300 mark non-tradable.
+
 ## Pricing methodology
 
 ### Acquisition and source selection
@@ -377,31 +382,33 @@ Default confidence values are:
 
 | Source | Confidence (basis points) |
 | --- | ---: |
-| Complete HoodLiquid HL500 basket | 9500 |
+| Complete HoodLiquid HL300 basket | 9500 |
 | TCGPlayer API or Playwright | 9500 |
 | PokeTrace sold-listing EWAP | 9750 |
 | PokeTrace aggregate | 9400 |
 | Approved snapshot | 9000 |
-| Indicative HL500 seed list | 0 |
+| Indicative HL300 seed list | 0 |
 
 Each accepted source hash is SHA-256 over a stable serialization of market,
 source, raw price, smoothed price, and source observation time. Repeated
 observations are idempotent.
 
-### HL500
+### HL300 carry-forward policy
 
-HL500 is HoodLiquid's own fixed 500-card index on both networks. The worker
-loads `data/oracle/hl500-constituents.json`, obtains each reviewed constituent's
-TCGPlayer observation (or one of exactly eight approved snapshot exceptions),
-applies row-level smoothing, and sums the 500 accepted USD marks into the raw
-index value. The index then passes the same floor and adaptive-EWMA rules as the
-other markets.
+HL300 is HoodLiquid's fixed 300-card index. The worker loads
+data/oracle/hl300-constituents.json, collects each reviewed TCGPlayer Near Mint
+English product, applies row-level smoothing, and sums the 300 USD marks before
+applying the index EWMA.
 
-The index becomes authoritative only when the file contains exactly 500 usable
-rows: 492 reviewed TCGPlayer product mappings and exactly 8 approved snapshots.
-There is no external index fallback. Until that gate passes, the seed sum is
-marked `hoodliquid-hl500-seed`, has zero confidence, is non-tradable, and is
-excluded from accepted marks and on-chain publication.
+A constituent with a real prior observation keeps that last price when it is
+temporarily unpriced. A constituent is fresh for
+ORACLE_INDEX_FRESHNESS_SECONDS (default 30 minutes); older observations are
+counted as carried, but do not freeze the index—even if all 300 are carried.
+When every constituent has a real prior observation, HL300 remains tradable.
+Only a constituent that has never been priced makes the seed sum indicative,
+zero-confidence, and non-tradable. The index mark uses the oldest fresh
+constituent time when any are fresh, or the current cycle time when all prices
+are carried. Alert on a sustained carried count rather than index mark age.
 
 ## PostgreSQL model
 
@@ -452,25 +459,25 @@ psql "$DATABASE_URL" -c "select market_id,interval_seconds,bucket,open,high,low,
 | ORACLE_POKETRACE_POLL_INTERVAL_MS | 900000 | PokeTrace polling cadence |
 | ORACLE_POKETRACE_MAX_AGE_SECONDS | 1800 | Maximum corroboration age |
 | ORACLE_POKETRACE_USE_LISTINGS | true | Try the sold-listings endpoint; false uses aggregate mode |
-| ORACLE_HL500_ENABLED | true | Enables HL500 evaluation; completeness remains mandatory |
+| ORACLE_INDEX_FRESHNESS_SECONDS | 1800 | Freshness threshold used to classify HL300 constituent carries |
 | ORACLE_PRICE_FLOORS | data/oracle/price-floors.json | Optional floor file override |
 | ORACLE_MARKET_REGISTRY | data/oracle/market-registry.json | Optional registry override |
-| ORACLE_HL500_CONSTITUENTS | data/oracle/hl500-constituents.json | Optional HL500 file override |
+| ORACLE_INDEX_CONSTITUENTS | data/oracle/hl300-constituents.json | Optional live index constituent file override |
 
 ## Customizing markets
 
 Edit data/oracle/market-registry.json for market identity, source product,
 condition, floor, and display metadata. Keep priceApiMarket unique and preserve
 positive floors. Update data/oracle/price-floors.json as an auditable mirror.
-For HL500, edit data/oracle/hl500-constituents.json and use the included
-resolver only with approved API access:
+HL300 must be regenerated from the reviewed HL500 source file; do not edit the
+derived file by hand:
 
 ~~~bash
-node scripts/resolve-hl500-tcgplayer-ids.cjs --dry-run
+npm run oracle:build:hl300
 ~~~
 
-Run npm test after every registry change. Mainnet HL500 will not activate unless
-the exact 500-usable-row and 8-snapshot gate passes.
+Run npm test after every registry change. Review HL500 source mappings before
+regenerating HL300.
 
 ## Testing
 
@@ -509,10 +516,12 @@ No accepted mark appears:
 - Check the floor, freshness, source quorum, and deviation settings.
 - Confirm PostgreSQL migrations ran against the same DATABASE_URL.
 
-HL500 is absent on testnet or mainnet:
+HL300 is indicative:
 
-- This is intentional while the committed constituent mapping is incomplete.
-- Complete and review all 492 product mappings and 8 snapshot exceptions.
+- Inspect `unpricedCount` in its source metadata; at least one constituent has
+  never had a real observation.
+- Once every constituent has a real observation, carried prices are accepted
+  indefinitely during temporary source gaps.
 
 Migration says role `hoodliquid_oracle` does not exist:
 

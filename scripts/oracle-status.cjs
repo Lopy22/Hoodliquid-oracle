@@ -5,7 +5,7 @@ async function main() {
   try {
     const [markets, run, lease] = await Promise.all([
       pool.query(
-        "SELECT m.market_id,m.live,o.price,o.source,o.confidence_bps,o.observed_at,"
+        "SELECT m.market_id,m.live,o.price,o.source,o.confidence_bps,o.observed_at,o.metadata->'quote' AS quote,"
         + "floor(extract(epoch from (now()-o.observed_at)))::bigint AS age_seconds "
         + "FROM markets m LEFT JOIN oracle_marks o ON o.market_id=m.market_id ORDER BY m.market_id"
       ),

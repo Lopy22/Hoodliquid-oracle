@@ -18,6 +18,7 @@ async function runWorker({ pool, network, name, intervalMs, run }) {
       } catch (error) {
         logger.error({ err: error, worker: name, network: network.key }, "Worker cycle failed");
         await heartbeat({ lastErrorAt: new Date().toISOString(), lastError: error instanceof Error ? error.message : String(error) });
+        if (process.argv.includes("--once")) throw error;
       }
       if (stopping || process.argv.includes("--once")) break;
       await interruptibleDelay(Math.max(1_000, intervalMs - (Date.now() - started)), () => stopping);
