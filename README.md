@@ -92,12 +92,50 @@ ORACLE_TCGPLAYER_SOURCE=api
 TCGPLAYER_BEARER_TOKEN=your-approved-token
 ~~~
 
-## Docker quickstart
+## Requirements and platform support
 
-Requirements: Docker Engine with Compose v2.
+The oracle runs on **Linux, macOS, and Windows**. Pick one of two ways to run it:
+
+| Path | Best for | Works on |
+| --- | --- | --- |
+| **Docker Compose** | Most people; identical on every OS | Linux, macOS, Windows |
+| Native Node.js + PostgreSQL | Development, or hosts without Docker | Linux, macOS, Windows |
+
+**Docker is the recommended path for everyone.** It bundles PostgreSQL, the
+migrations, the ingestion worker, and the API into one command that behaves the
+same on all three operating systems, so you can skip the platform-specific
+database and shell setup entirely.
+
+Install the prerequisites for your chosen path:
+
+| Tool | Linux (Debian/Ubuntu) | macOS (Homebrew) | Windows |
+| --- | --- | --- | --- |
+| Docker (Compose path) | Docker Engine + Compose plugin | Docker Desktop | Docker Desktop (WSL 2 backend) |
+| Node.js 22 (native path) | `nvm install 22`, or NodeSource | `brew install node@22` | `winget install OpenJS.NodeJS.LTS` |
+| PostgreSQL 16 (native path) | `sudo apt install postgresql-16` | `brew install postgresql@16` | `winget install PostgreSQL.PostgreSQL.16` |
+| Git | `sudo apt install git` | `brew install git` | `winget install Git.Git` |
+
+> Node.js 22 is required (`engines: ">=22 <23"`). On Windows, the PostgreSQL
+> installer includes `psql`; make sure its `bin` folder (e.g.
+> `C:\Program Files\PostgreSQL\16\bin`) is on your `PATH` so `psql` and
+> `pg_isready` work in a new terminal. On Fedora/RHEL substitute `sudo dnf install`.
+
+## Docker quickstart (recommended, all platforms)
+
+Requirements: **Docker Desktop** (Windows/macOS) or **Docker Engine with the
+Compose v2 plugin** (Linux). This is the same procedure on every OS — only the
+command that copies the example env file differs by shell.
+
+Copy the example environment file:
 
 ~~~bash
+# Linux / macOS, and Windows (PowerShell or Git Bash)
 cp .env.example .env
+~~~
+
+~~~text
+:: Windows Command Prompt (cmd.exe)
+copy .env.example .env
 ~~~
 
 Add a PostgreSQL password to the new file:
@@ -127,46 +165,47 @@ curl -fsS http://127.0.0.1:8080/api/v1/46630/prices
 docker compose logs -f ingest
 ~~~
 
+> **Windows PowerShell:** `curl` is an alias for `Invoke-WebRequest` and does not
+> accept `-fsS`. Use the real curl binary as `curl.exe -fsS http://...`, or just
+> open the URL in a browser. (Command Prompt and Git Bash accept `curl` directly.)
+
 Readiness returns HTTP 503 until a permitted source is configured, a successful
 ingestion cycle has completed, and every enabled market has a fresh accepted
 mark.
 
 ## Native Node.js and PM2
 
-Requirements:
+Requirements (all platforms): Node.js 22, PostgreSQL 16, Playwright Chromium
+when Playwright mode is selected, and PM2 for the optional service-manager
+workflow. Install them with the commands in
+[Requirements and platform support](#requirements-and-platform-support).
 
-- Node.js 22
-- PostgreSQL 16
-- Playwright Chromium when Playwright mode is selected
-- PM2 for the optional service manager workflow
-
-On Ubuntu, install and start PostgreSQL 16 before creating the role (use the
-PostgreSQL upstream repository if your Ubuntu release does not provide 16):
+Start the PostgreSQL service, then open a `psql` admin session:
 
 ~~~bash
-sudo apt update
+# Linux (Debian/Ubuntu): install (if needed), start, and open as the postgres user
 sudo apt install -y postgresql-16 postgresql-client-16
 sudo systemctl enable --now postgresql
-~~~
-
-On macOS with Homebrew:
-
-~~~bash
-brew install postgresql@16
-brew services start postgresql@16
-~~~
-
-Create the PostgreSQL login role and testnet database before running a
-migration. The role name in the example `DATABASE_URL` is not created by npm.
-Open PostgreSQL as its administrative user:
-
-~~~bash
 sudo -u postgres psql
 ~~~
 
-On macOS with a Homebrew PostgreSQL installation, the equivalent is usually
-`psql postgres` under the macOS user that installed PostgreSQL. Run the
-following SQL inside `psql`; replace the example password first:
+~~~bash
+# macOS (Homebrew): start the service, then open psql as your own user
+brew services start postgresql@16
+psql postgres
+~~~
+
+~~~text
+:: Windows: the installer runs PostgreSQL as a service automatically.
+:: Open psql as the "postgres" superuser (use the password set during install).
+:: Run this in PowerShell or Command Prompt:
+psql -U postgres -h 127.0.0.1
+~~~
+
+Create the PostgreSQL login role and testnet database before running a
+migration — the role in the example `DATABASE_URL` is not created by npm. Run
+the following SQL inside the `psql` session on any OS; replace the example
+password first:
 
 ~~~sql
 DO $$
@@ -196,20 +235,36 @@ The role owns the database, so it can create the tables, partitions, indexes,
 and migration ledger. Test the exact credentials before installing the app:
 
 ~~~bash
+# Linux / macOS / Git Bash
 PGPASSWORD='replace-with-a-long-random-password' \
 psql -h 127.0.0.1 -U hoodliquid_oracle -d hoodliquid_oracle_testnet \
   -c 'select current_user, current_database();'
 ~~~
 
+~~~powershell
+# Windows PowerShell (set the variable for the session, then run psql)
+$env:PGPASSWORD = 'replace-with-a-long-random-password'
+psql -h 127.0.0.1 -U hoodliquid_oracle -d hoodliquid_oracle_testnet -c "select current_user, current_database();"
+~~~
+
 Then create the environment file and install dependencies:
 
 ~~~bash
+# Linux / macOS / Git Bash / Windows PowerShell
 cp .env.example .env
 npm ci
 npx playwright install chromium
 ~~~
 
-On Ubuntu, install Playwright's browser and OS dependencies together:
+~~~text
+:: Windows Command Prompt only
+copy .env.example .env
+npm ci
+npx playwright install chromium
+~~~
+
+On Linux, install Playwright's browser and its OS dependencies together
+(macOS and Windows do not need the `--with-deps` system packages):
 
 ~~~bash
 npx playwright install --with-deps chromium
@@ -243,7 +298,17 @@ They can instead be managed by PM2. Put production values in
 .env.production and run:
 
 ~~~bash
+# Linux / macOS / Git Bash
 NODE_ENV=production npm run db:migrate
+npm run pm2:start
+pm2 logs hoodliquid-oracle-ingest-rh-testnet
+pm2 save
+~~~
+
+~~~powershell
+# Windows PowerShell (set the variable first, then run)
+$env:NODE_ENV = "production"
+npm run db:migrate
 npm run pm2:start
 pm2 logs hoodliquid-oracle-ingest-rh-testnet
 pm2 save
@@ -252,6 +317,27 @@ pm2 save
 The PM2 file runs one API and one ingestion process. PostgreSQL advisory locks
 ensure that only one ingestion leader operates for a database even if a second
 worker is accidentally started.
+
+### Shell and platform notes
+
+A few commands behave differently per shell. When in doubt on Windows, use
+**PowerShell** or **Git Bash** rather than Command Prompt.
+
+- **Inline environment variables** (`NAME=value command`) are a Unix-shell
+  feature. In PowerShell set them first: `$env:NAME = "value"` then run the
+  command. In Command Prompt: `set NAME=value` then run the command.
+- **`npm run check:syntax`** (and therefore `npm run check`) uses a Bash `for`
+  loop, so it only runs on Linux/macOS/Git Bash. On Windows Command Prompt or
+  PowerShell run the cross-platform tests directly with `npm test`.
+- **`npm run oracle:refresh:index`** sets `NODE_ENV` inline, so on native
+  Windows run it as two steps: `$env:NODE_ENV = "production"` then
+  `node scripts/refresh-index-constituents.cjs`. (Under Docker or WSL it works
+  as-is.)
+- **`curl`** in PowerShell is an alias for `Invoke-WebRequest`; use `curl.exe`
+  for the `-fsS` flags, or a browser.
+
+If you would rather avoid all of these differences, use the Docker path — it
+runs the same on every operating system.
 
 ### Running testnet and mainnet together
 
@@ -265,8 +351,15 @@ The PM2 file derives unique process names from CHAIN_ID. To launch two copies
 from one checkout, provide each environment file explicitly:
 
 ~~~bash
+# Linux / macOS / Git Bash
 ENV_FILE=.env.testnet.production npm run pm2:start
 ENV_FILE=.env.mainnet.production npm run pm2:start
+~~~
+
+~~~powershell
+# Windows PowerShell
+$env:ENV_FILE = ".env.testnet.production"; npm run pm2:start
+$env:ENV_FILE = ".env.mainnet.production"; npm run pm2:start
 ~~~
 
 ## Commands
@@ -482,20 +575,34 @@ regenerating HL300.
 ## Testing
 
 Automated tests use recorded in-memory fixtures and never contact TCGPlayer or
-PokeTrace. Run:
+PokeTrace. The fixture tests run on every platform:
 
 ~~~bash
-npm run check
+# Any OS / shell
+npm test
 ~~~
 
+`npm run check` additionally runs a Bash syntax loop and the secret scanner, so
+use it on Linux/macOS/Git Bash; on Windows Command Prompt or PowerShell, `npm
+test` covers the cross-platform portion.
+
 PostgreSQL integration tests reset the public schema, so they refuse any
-database whose name does not contain the word test:
+database whose name does not contain the word `test`:
 
 ~~~bash
+# Linux / macOS / Git Bash
 createdb hoodliquid_oracle_test
 RUN_POSTGRES_TESTS=true \
 TEST_DATABASE_URL=postgresql:///hoodliquid_oracle_test \
-npm test
+npm run test:integration
+~~~
+
+~~~powershell
+# Windows PowerShell
+createdb hoodliquid_oracle_test
+$env:RUN_POSTGRES_TESTS = "true"
+$env:TEST_DATABASE_URL = "postgresql://hoodliquid_oracle@127.0.0.1:5432/hoodliquid_oracle_test"
+npm run test:integration
 ~~~
 
 CI performs syntax checks, fixture tests, PostgreSQL 16 integration tests,
@@ -544,7 +651,12 @@ Worker says an active leader exists:
 
 Playwright cannot launch:
 
-- Run npx playwright install --with-deps chromium on Linux.
+- On Linux, install the browser and its system libraries together:
+  `npx playwright install --with-deps chromium`.
+- On macOS and Windows, `npx playwright install chromium` is enough (no
+  `--with-deps` system packages are needed).
+- If you cannot install a browser at all, use approved TCGPlayer API mode
+  (`ORACLE_TCGPLAYER_SOURCE=api` with a bearer token) instead of Playwright.
 
 ## Security, attribution, and licensing
 
